@@ -22,12 +22,16 @@ const userSchema = new Schema(
     country: {
       type: String,
     },
-    comment: {
+    comment: 
+    [
+      {
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+      }
+    ],
+    role: {
       type: String,
-    },
-    roll: {
-      type: String,
-      ennum: ["user", "admin"],
+      enum: ["user", "admin"],
       default: "user",
     },
   },

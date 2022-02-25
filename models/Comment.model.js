@@ -1,19 +1,20 @@
 const { Schema, model } = require("mongoose");
 
 const wineSchema = new Schema({
-  user: {
-    type: String,
-    required: true,
-  },
   text: {
     type: String,
     required: true,
   },
-  wine: [
-   //HACER LA REFERENCIA
-]
+  wine: {
+    type: Schema.Types.ObjectId,
+    ref: "Wine"
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 
-const WineModel = model("Wine", wineSchema);
+const CommentModel = model("Comment", wineSchema);
 
-module.exports = WineModel;
+module.exports = CommentModel;

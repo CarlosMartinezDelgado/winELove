@@ -38,7 +38,7 @@
       id="inputGroup-sizing-default"
     >Email:</span>
     <input
-      type="number"
+      type="text"
       name="email"
       class="form-control"
       aria-label="Sizing example input"
@@ -53,7 +53,7 @@
       id="inputGroup-sizing-default"
     >Password:</span>
     <input
-      type="number"
+      type="texts"
       name="password"
       class="form-control"
       aria-label="Sizing example input"
@@ -91,9 +91,13 @@
   </div>
 
   <div>
-    <button class="btn btn-outline-success"><a href="/drones">Crear</a></button>
+    <button class="btn btn-outline-success">Crear</button>
   </div>
 
 </form>
+
+{{#if errorMessage}}
+   <p>{{errorMessage}}</p>
+{{/if}}
 
 </div>

@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+//const mongoose = require("mongoose")
 
 const wineSchema = new Schema({
   name: {
@@ -9,28 +10,38 @@ const wineSchema = new Schema({
     type: String,
     required: true,
   },
-  varieties: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
-  vintage: {
+  varieties: 
+  {
     type: String,
+    enum: [],
+    required: true,
+  },
+  
+  vintage: {
+    type: Number,
     required: true,
   },
   country: {
     type: String,
   },
-  Bio: {
+  bio: {
     type: Boolean,
   },
-  Color: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
+  type: 
+  {
+    type: String,
+    enum: ["red wine", "White wine", "Rosse wine"],
+    required: true,
+  },
+  comment: {
+    type: Schema.Types.ObjectId,
+    ref: "Comment"
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
+  
 });
 
 const WineModel = model("Wine", wineSchema);

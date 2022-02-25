@@ -4,8 +4,6 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 
-// How many rounds should bcrypt run the salt (default [10 - 12 rounds])
-const saltRounds = 10;
 
 // Require the User model in order to interact with the database
 const UserModel = require("../models/User.model");
@@ -14,17 +12,17 @@ const UserModel = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get("/signup", isLoggedOut, (req, res) => {
+router.get("/signup", isLoggedOut, (req, res, next) => {
   res.render("auth/signup");
 });
 
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/signup", isLoggedOut, async (req, res, next) => {
   const { username, password, email, nickname, country } = req.body;
-  const passwordRegexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/; 
+  const passwordRegexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/; //Conditions of the password
 
   if (!username || !email || !nickname || !password ) {
     return res.status(400).render("auth/signup", {
-      errorMessage: "Please provide your username.",
+      errorMessage: "Please fill all fields.",
     });
   }
 
@@ -34,115 +32,111 @@ router.post("/signup", isLoggedOut, (req, res) => {
     })
     return;
   }
-
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ nickname }).then((found) => {
-    // If the user is found, send the message username is taken
-    if (found) {
+   // que no exista el correo
+  try {
+    const emailUser = await UserModel.findOne({ email })
+    if(emailUser) {
       return res
-        .status(400)
-        .render("auth.signup", { errorMessage: "Nickname already taken." });
+      .status(400)
+      .render("auth/signup", { 
+        errorMessage: "Email alrealdy registered"
+      })
+      
     }
 
-    // if user nickname is not found, create a new user - start with hashing the password
-    return bcrypt
-      .genSalt(10)
-      .then((salt) => bcrypt.hash(password, salt)) //CUIDADO!! VARIABLE NO CREADA
-      .then((hashedPassword) => {
-        // Create a user and save it in the database
-        return User.create({
-          username,
-          password: hashedPassword,
-        });
-      })
-      .then((user) => {
-        // Bind the user to the session object
-        req.session.user = user;
-        res.redirect("/");
-      })
-      .catch((error) => {
-        if (error instanceof mongoose.Error.ValidationError) {
-          return res
-            .status(400)
-            .render("auth/signup", { errorMessage: error.message });
-        }
-        if (error.code === 11000) {
-          return res.status(400).render("auth/signup", {
-            errorMessage:
-              "Nickname need to be unique. The Nickname you chose is already in use.",
-          });
-        }
-        return res
-          .status(500)
-          .render("auth/signup", { errorMessage: error.message });
-      });
-  });
-});
+    const nickNameUser = await UserModel.findOne({ nickname })
+    if(nickNameUser) {
+      return res
+      .status(400)
+      .render("auth/signup", { 
+        errorMessage: "Nickname alrealdy exits"
+      })     
+    }
+ 
+    //encode password
+    //Salt
+    const salt = await bcrypt.genSalt(10)
+    //Encryption
+    const hashedPassword = await bcrypt.hash(password, salt)
 
-router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
-});
-
-router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
-
-  if (!username) {
-    return res.status(400).render("auth/login", {
-      errorMessage: "Please provide your username.",
-    });
-  }
-
-  // Here we use the same logic as above
-  // - either length based parameters or we check the strength of a password
-///////////////////////////////////////
-////////////////////////////////////
-  ////////////////////////////////////
-  if (passwordRegexp !== password) {
-    return res.status(400).render("auth/login", {
-      errorMessage: "Your password isn't correct.",
-    });
-  }
-
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
-    .then((user) => {
-      // If the user isn't found, send the message that user provided wrong credentials
-      if (!user) {
-        return res.status(400).render("auth/login", {
-          errorMessage: "Wrong credentials.",
-        });
-      }
-
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
-      bcrypt.compare(password, user.password).then((isSamePassword) => {
-        if (!isSamePassword) {
-          return res.status(400).render("auth/login", {
-            errorMessage: "Wrong credentials.",
-          });
-        }
-        req.session.user = user;
-        // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("/");
-      });
+    //User Create
+    await UserModel.create({
+      username,
+      email,
+      password:hashedPassword,
+      nickname,
+      country,
     })
+    res.redirect("/auth/login")
+  } 
+  catch (error) 
+  {
+    next(err)
+  }
+})
 
-    .catch((err) => {
-      // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
-      // you can just as easily run the res.status that is commented out below
-      next(err);
-      // return res.status(500).render("login", { errorMessage: err.message });
-    });
-});
+router.get("/login", async (req, res, next) => {
+    console.log(req.body);
+    const {email, password} = req.body
 
-router.get("/logout", isLoggedIn, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
+    // validation log in
+    if (!email || !password) {
       return res
-        .status(500)
-        .render("auth/logout", { errorMessage: err.message });
+      .status(400)
+      .render("/auth/login", {
+        errorMessage: "Fill all fields"})
     }
-    res.redirect("/");
-  });
-});
+
+  
+  try{
+    // Search the database for a user with the username submitted in the form
+    
+    const emailUser = await UserModel.findOne({ email })
+
+    if (!emailUser) {
+     return res
+      .status (500)
+      .render("auth/login.hbs", {
+        errorMessage: "Email is not in our data base"
+      })
+      
+    }
+
+  // Check password
+  const passMatch = await bcrypt.compare(password, emailUser.password)
+  console.log(passMatch);
+
+    if (!passMatch) {
+      return res
+      .status (404)
+      .render("auth/login.hbs", {
+        errorMessage: "Wrong Password!!"
+      })
+    }
+
+    req.session.user = emailUser
+    req.app.locals.isLoggedIn = true // req.app.locals. es una variable local
+    
+    if (emailUser.role === "admin") {
+    req.app.locals.isLoggedIn = true
+    }
+    //*3 Redirect user to profile
+    res.redirect("/profile")
+
+  } 
+  catch (error) {
+    next(err)
+  }
+  
+})
+
+router.get("/logout", (req, res, next) => {
+
+  req.session.destroy();
+  req.app.locals.isLoggedIn = false
+
+  res.redirect("/")
+})
+
 
 module.exports = router;
