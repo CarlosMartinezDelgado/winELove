@@ -19,45 +19,35 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, email, nickname, country } = req.body;
+  const passwordRegexp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/; 
 
-  if (!username) {
+  if (!username || !email || !nickname || !password ) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Please provide your username.",
     });
   }
 
-  if (password.length < 8) {
-    return res.status(400).render("auth/signup", {
-      errorMessage: "Your password needs to be at least 8 characters long.",
-    });
+  if (!passwordRegexp.test(password)) {
+    res.render("auth/signup.hbs", {
+      errorMessage: "Password has to be between 8 & 15, capitalize letter, lowercase letter, one digit and at least one special character"
+    })
+    return;
   }
-
-  //   ! This use case is using a regular expression to control for special characters and min length
-  /*
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
-
-  if (!regex.test(password)) {
-    return res.status(400).render("signup", {
-      errorMessage:
-        "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
-    });
-  }
-  */
 
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
+  User.findOne({ nickname }).then((found) => {
     // If the user is found, send the message username is taken
     if (found) {
       return res
         .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+        .render("auth.signup", { errorMessage: "Nickname already taken." });
     }
 
-    // if user is not found, create a new user - start with hashing the password
+    // if user nickname is not found, create a new user - start with hashing the password
     return bcrypt
-      .genSalt(saltRounds)
-      .then((salt) => bcrypt.hash(password, salt))
+      .genSalt(10)
+      .then((salt) => bcrypt.hash(password, salt)) //CUIDADO!! VARIABLE NO CREADA
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
@@ -79,7 +69,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).render("auth/signup", {
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "Nickname need to be unique. The Nickname you chose is already in use.",
           });
         }
         return res
@@ -104,9 +94,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
-  if (password.length < 8) {
+///////////////////////////////////////
+////////////////////////////////////
+  ////////////////////////////////////
+  if (passwordRegexp !== password) {
     return res.status(400).render("auth/login", {
-      errorMessage: "Your password needs to be at least 8 characters long.",
+      errorMessage: "Your password isn't correct.",
     });
   }
 

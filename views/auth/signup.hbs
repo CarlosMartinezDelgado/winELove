@@ -12,19 +12,19 @@
 {{#if errorMessage}}
    {{errorMessage}}
 {{/if}} --}}
-<h2>Create a new drone</h2>
+<h2>Create a New User</h2>
 <div id="create-form">
 <form action="/auth/signup" method="POST">
 
   <div class="input-group mb-3">
     <span
-      for="name"
+      for="username"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Name</span>
+    >User Name:</span>
     <input
       type="text"
-      name="name"
+      name="username"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
@@ -33,13 +33,13 @@
 
   <div class="input-group mb-3">
     <span
-      for=""
+      for="email"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Propeller</span>
+    >Email:</span>
     <input
       type="number"
-      name="propeller"
+      name="email"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
@@ -48,13 +48,13 @@
 
   <div class="input-group mb-3">
     <span
-      for="maxSpeed"
+      for="password"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Max Speed</span>
+    >Password:</span>
     <input
       type="number"
-      name="maxSpeed"
+      name="password"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
@@ -63,13 +63,27 @@
 
   <div class="input-group mb-3">
     <span
-      for="img"
+      for="nickname"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Image</span>
+    >Nick Name:</span>
     <input
       type="text"
-      name="img"
+      name="nickname"
+      class="form-control"
+      aria-label="Sizing example input"
+      aria-describedby="inputGroup-sizing-default"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span
+      for="country"
+      class="input-group-text"
+      id="inputGroup-sizing-default"
+    >Country:</span>
+    <input
+      type="text"
+      name="country"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
