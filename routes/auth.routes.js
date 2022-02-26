@@ -39,7 +39,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
       return res
       .status(400)
       .render("auth/signup", { 
-        errorMessage: "Email alrealdy registered"
+        errorMessage: "Email already registered"
       })
       
     }
@@ -49,7 +49,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
       return res
       .status(400)
       .render("auth/signup", { 
-        errorMessage: "Nickname alrealdy exits"
+        errorMessage: "Nickname already exits"
       })     
     }
  
@@ -63,7 +63,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
     await UserModel.create({
       username,
       email,
-      password:hashedPassword,
+      password: hashedPassword,
       nickname,
       country,
     })
@@ -75,15 +75,19 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
   }
 })
 
-router.get("/login", async (req, res, next) => {
-    console.log(req.body);
+router.get("/login", isLoggedOut, (req, res, next) => {
+  res.render("auth/login");
+});
+
+router.post("/login", isLoggedOut, async (req, res, next) => {
+    //console.log(req.body);
     const {email, password} = req.body
 
     // validation log in
     if (!email || !password) {
       return res
       .status(400)
-      .render("/auth/login", {
+      .render("auth/login", {
         errorMessage: "Fill all fields"})
     }
 
@@ -121,7 +125,7 @@ router.get("/login", async (req, res, next) => {
     req.app.locals.isLoggedIn = true
     }
     //*3 Redirect user to profile
-    res.redirect("/profile")
+    res.redirect("/main")  /// profile
 
   } 
   catch (error) {
