@@ -1,0 +1,33 @@
+<h1>Available drones</h1>
+
+{{#each allDrones}}
+  <div class="row row-cols-2">
+    <div class="col">
+      <div class="card" style="width: 40rem">
+        <img src="{{this.url}}" class="card-img-top" alt="Drone" />
+        <div class="card-body">
+          <h5 class="card-title">{{this.name}}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Propellers: {{this.propellers}}</li>
+            <li class="list-group-item">Max Speed: {{this.maxSpeed}}</li>
+          </ul>
+          <div class="card-body">
+            <a href="/drones/{{this._id}}/edit" class="card-link"><button
+                type="button"
+                class="btn btn-outline-success"
+              >Editar</button></a>
+
+            <form action="/drones/{{this.id}}/delete" method="POST">
+              <button
+                type="submit"
+                class="btn btn-outline-danger"
+              >Borrar</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{/each}}

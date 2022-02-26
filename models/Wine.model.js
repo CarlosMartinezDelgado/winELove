@@ -6,14 +6,14 @@ const wineSchema = new Schema({
     type: String,
     required: true,
   },
-  origin: {
+  aging: {
     type: String,
     required: true,
   },
   varieties: 
   {
     type: String,
-    enum: [],
+    enum: ["Cabernet Sauvignon", "Malbec", "Merlot", "Tempranillo", "Albillo", "Pinot Noir","Cariñena", "Garnacha", "Syrah", "Chardonnay", "Sauvignon Blanc", "Airen", "Verdejo", "Albariño", "Kyoho", "Sultanina", "Red Globe", "Blauer Burgunder", "Trebbiano Toscano", "Ugni Blanc", "Carmenère", "Riesling", "Gewurztraminer", "Sémillon"],
     required: true,
   },
   
@@ -30,7 +30,7 @@ const wineSchema = new Schema({
   type: 
   {
     type: String,
-    enum: ["red wine", "White wine", "Rosse wine"],
+    enum: ["Red wine", "White wine", "Rosse wine", "Spiritosen"],
     required: true,
   },
   comment: {

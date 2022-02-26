@@ -10,3 +10,26 @@ a {
 h1 {
   color: 15px;
 }
+
+#welcome {
+
+}
+
+.cuadro {
+width:450px;
+margin:10px 50px;
+padding:20px;
+font-size:italic;
+background-color:#cfc;
+color:#000;
+}
+
+#etiqueta {
+  width: 110px;
+  text-align:center;
+
+}
+
+.logo {
+padding-left: 55px;
+}
