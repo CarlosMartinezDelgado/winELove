@@ -9,6 +9,24 @@ const CommentModel = require("../models/Comment.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
+router.get("/allWines", async (req, res, next) => {
+  const allWines = await WineModel.find();
+  try {
+    res.render("wine/allWines", {allWines})
+  }catch (err) {
+    next(err);
+  }
+})
+
+router.get("/wine-details", async (req, res, next) => {
+  const wineDetails = await WineModel.findById();
+  try {
+    res.render("wine/wine-details", {wineDetails})
+  }catch (err) {
+    next(err);
+  }
+})
+
 // GET "/wine/create"
 
 router.get("/addWine", async (req, res, next) => {
@@ -22,12 +40,12 @@ router.get("/addWine", async (req, res, next) => {
 
   //POST "/wines/create"
   router.post("/addWine", async (req, res, next) => {
-    const { name, aging, varieties, vintage, country, bio, type } = req.body;
+    const { name, aging, grapes, vintage, country, bio, type } = req.body;
     try {
       await WineModel.create({
         name,
         aging,
-        varieties,
+        grapes,
         vintage,
         country,
         bio,
