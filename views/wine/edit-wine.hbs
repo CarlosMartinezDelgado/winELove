@@ -1,0 +1,162 @@
+<h3>Edit {{oneWine.name}}</h3>
+<div id="create-form" style="width: 30rem">
+  <form action="/wines/{{oneWine._id}}/edit" method="POST">
+
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="name"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Name:</span>
+      <input
+        type="text"
+        name="name"
+        value="{{oneWine.name}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="aging"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Aging:</span>
+      <input
+        type="text"
+        name="aging"
+        value="{{oneWine.aging}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="grapes"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Grapes:</span>
+      <input
+        type="texts"
+        name="grapes"
+        value="{{oneWine.grapes}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="vintage"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Vintage:</span>
+      <input
+        type="text"
+        name="vintage"
+        value="{{oneWine.vintage}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="country"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Country:</span>
+      <input
+        type="texts"
+        name="country"
+        value="{{oneWine.country}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="bio"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Bio:</span>
+      <input
+        type="boolean"
+        name="bio"
+        value="{{oneWine.bio}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="type"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Type:</span>
+      <input
+        type="texts"
+        name="type"
+        value="{{oneWine.type}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="comment"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >Comment:</span>
+      <input
+        type="texts"
+        name="comment"
+        value="{{oneWine.comment}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+    <div class="input-group mb-3">
+      <span
+        id="etiqueta"
+        for="user"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+      >User:</span>
+      <input
+        type="texts"
+        name="user"
+        value="{{oneWine.user}}"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-default"
+      />
+    </div>
+
+    <div id="etiqueta">
+      <button class="btn btn-outline-success" type="submit">Add Changes</button>
+    </div>
+
+  </form>
+
+  {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+  {{/if}}
+
+</div>

@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
 // router.use("/auth", authRoutes);
 
 const wineRoutes = require("./wine.routes");
-router.use("/wine", wineRoutes);
+router.use("/wines", wineRoutes);
 
 const mainRoutes = require("./main.routes");
 router.use("/main", mainRoutes);
