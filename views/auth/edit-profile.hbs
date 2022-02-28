@@ -1,17 +1,18 @@
-<h3>Add new wine</h3>
 
+<h2>Profile</h2>
 <div id="create-form" style="width: 30rem">
-<form action="/wines/addWine" method="POST">
+<form action="/auth/{{userProfile._id}}/profile" method="POST">
 
   <div class="input-group mb-3">
     <span id="etiqueta"
-      for="name"
+      for="username"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Name:</span>
+    >User Name:</span>
     <input
       type="text"
-      name="name"
+      name="username"
+      value="{{oneWine.username}}"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
@@ -20,13 +21,14 @@
 
   <div class="input-group mb-3">
     <span id="etiqueta"
-      for="aging"
+      for="email"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Aging:</span>
+    >Email:</span>
     <input
       type="text"
-      name="aging"
+      name="email"
+      value="{{oneWine.email}}"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
@@ -35,27 +37,30 @@
 
   <div class="input-group mb-3">
     <span id="etiqueta"
-      for="grapes"
+      for="password"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Varieties:</span>
+    >Password:</span>
     <input
       type="texts"
-      name="grapes"
+      name="password"
+      value="{{oneWine.password}}"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
     />
   </div>
+
   <div class="input-group mb-3">
     <span id="etiqueta"
-      for="vintage"
+      for="nickname"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Vintage:</span>
+    >Nick Name:</span>
     <input
       type="text"
-      name="vintage"
+      name="nickname"
+      value="{{oneWine.nickname}}"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
@@ -68,72 +73,33 @@
       id="inputGroup-sizing-default"
     >Country:</span>
     <input
-      type="texts"
+      type="text"
       name="country"
+      value="{{oneWine.country}}"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
     />
-  </div>
-  <div class="input-group mb-3">
+
+    <div class="input-group mb-3">
     <span id="etiqueta"
-      for="bio"
+      for="image"
       class="input-group-text"
       id="inputGroup-sizing-default"
-    >Bio:</span>
+    >Image:</span>
     <input
-      type="boolean"
-      name="bio"
+      type="text"
+      name="image"
+      value="{{oneWine.image}}"
       class="form-control"
       aria-label="Sizing example input"
       aria-describedby="inputGroup-sizing-default"
     />
+
   </div>
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="type"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Type:</span>
-    <input
-      type="texts"
-      name="type"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="comment"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Comment:</span>
-    <input
-      type="texts"
-      name="comment"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="user"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >User:</span>
-    <input
-      type="texts"
-      name="user"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  
+
   <div id="etiqueta">
-    <button class="btn btn-outline-success" type="submit">Enter</button>
+    <button class="btn btn-outline-success">Crear</button>
   </div>
 
 </form>
