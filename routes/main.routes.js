@@ -16,68 +16,20 @@ router.get("/", (req, res, next) => {
   res.render("main/main.hbs")
 })
 
-router.get("/", (req, res, next) => {
+router.get("/profile", (req, res, next) => {
   res.render("main/profile.hbs")
 })
-// router.get("/", async (req, res, next) => {
-//   const allWines = await WineModel.find();
-//   try {
-//     res.render("wine/allWines", {allWines})
-//   }catch (err) {
-//     next(err);
-//   }
-// })
-
-
-// GET "/wine/create"
-
-// router.get("/addWine", async (req, res, next) => {
-//   const addWine = await WineModel.find();
-//   try {
-//     res.render("wine/addWine.hbs", { addWine });
-//   } catch (err) {
-//     next(err);
-//   }
-// }),
-
-//   //POST "/wines/create"
-//   router.post("/addWine", async (req, res, next) => {
-//     const { name, aging, grapes, vintage, country, bio, type } = req.body;
-//     try {
-//       await WineModel.create({
-//         name,
-//         aging,
-//         grapes,
-//         vintage,
-//         country,
-//         bio,
-//         type,
-//       });
-//       res.redirect("/main");
-//     } catch (err) {
-//       next(err);
-//     }
-//   });
   
-  router.get("/:id", async (req, res, next) => {
-    const id = req.params.id;
-    const userProfile = await UserModel.findById(id);
-    try {
-      res.render("auth/user-profile", {userProfile})
-    }catch (err) {
-      next(err);
-    }
-  })
 
-// Edit wines -- -Editar los vinos
+// Edit Profile -- -Editar el perfil
   router.get("/:id/edit", async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const oneWine = await WineModel.findById(id);
-    console.log(oneWine);
+    const userProfile = await UserModel.findById(id);
+    // console.log(oneProfile);
     // render edit-form view
-    res.render("wine/edit-wine.hbs", { oneWine });
+    res.render("main/edit-profile.hbs", { userProfile });
   } catch (err) {
     next(err);
   }
@@ -89,7 +41,7 @@ router.post("/:id/edit", async (req, res, next) => {
 
   //indByIdAndUpdate needs 2 parameters
   try {
-    const updatedWine = await WineModel.findByIdAndUpdate(id, {
+    const updatedProfile = await UserModel.findByIdAndUpdate(id, {
       name,
       aging,
       grapes,
@@ -98,7 +50,7 @@ router.post("/:id/edit", async (req, res, next) => {
       bio,
       type,
     });
-    res.redirect(`/wines/${updatedWine._id}/edit`);
+    res.redirect(`/wines/${updatedProfile._id}/edit`);
   } catch (err) {
     next(err);
   }
@@ -113,7 +65,7 @@ router.post("/:id/edit", async (req, res, next) => {
       const { id } = req.params;
 
       //Delete element from db
-      const deletedWine = await WineModel.findByIdAndDelete(id);
+      const deletedUser = await UserModel.findByIdAndDelete(id);
 
      res.redirect("/main");
     } catch (err) {
