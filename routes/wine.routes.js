@@ -11,7 +11,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 // GET "/wine/create"
 
-router.get("/", async (req, res, next) => {
+router.get("/addWine", async (req, res, next) => {
   const addWine = await WineModel.find();
   try {
     res.render("wine/addWine.hbs", { addWine });
@@ -21,7 +21,7 @@ router.get("/", async (req, res, next) => {
 }),
 
   //POST "/wines/create"
-  router.post("/", async (req, res, next) => {
+  router.post("/addWine", async (req, res, next) => {
     const { name, aging, varieties, vintage, country, bio, type } = req.body;
     try {
       await WineModel.create({

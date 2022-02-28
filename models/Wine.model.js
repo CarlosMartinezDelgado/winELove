@@ -33,6 +33,9 @@ const wineSchema = new Schema({
     enum: ["Red wine", "White wine", "Rosse wine"],
     required: true,
   },
+  image: {
+    type: String,
+  },
   comment: {
     type: Schema.Types.ObjectId,
     ref: "Comment"
