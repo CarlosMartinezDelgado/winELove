@@ -25,13 +25,6 @@ const userSchema = new Schema(
     image: {
       type: String,
     },
-    // comment: 
-    // [
-    //   {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Comment"
-    //   }
-    // ],
     role: {
       type: String,
       enum: ["user", "admin"],

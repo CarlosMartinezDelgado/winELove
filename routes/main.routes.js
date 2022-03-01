@@ -65,16 +65,13 @@ router.post("/profile/edit", async (req, res, next) => {
   }
 }),
 
-
-  router.post("/:id/delete", async (req, res, next) => {
-    
+  router.post("/profile/delete", async (req, res, next) => {
     try {
-      
       const id = req.session.user._id;
       //Delete element from db
       const deletedUser = await UserModel.findByIdAndDelete(id);
-
-     res.redirect("/main");
+      req.session.destroy();
+      res.redirect("/");
     } catch (err) {
       next(err);
     }
