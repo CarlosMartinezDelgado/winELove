@@ -34,7 +34,7 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
   
 
 // Edit Profile -- -Editar el perfil
-  router.get("/edit", isLoggedIn, async (req, res, next) => {
+  router.get("/profile/edit", isLoggedIn, async (req, res, next) => {
   
     const id = req.session.user._id // el id no deberia venir por params sino por req.ression.user._id
     try {
@@ -47,20 +47,19 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/id/edit", async (req, res, next) => {
+router.post("/profile/edit", async (req, res, next) => {
   const id = req.session.user._id;
-  const { username, password, email, nickname, country, image, comment } = req.body;
+  const { username, password, email, nickname, country, image} = req.body;
   try {
-    const updatedProfile = await UserModel.findByIdAndUpdate(id, {
+    await UserModel.findByIdAndUpdate(id, {
       username,
       email,
       password,
       nickname,
       country,
       image,
-      comment,
     });
-    res.redirect(`/main/${updatedProfile}/edit`);
+    res.redirect("/main/profile");
   } catch (err) {
     next(err);
   }
@@ -71,8 +70,7 @@ router.post("/id/edit", async (req, res, next) => {
     
     try {
       
-      const { id } = req.params;
-
+      const id = req.session.user._id;
       //Delete element from db
       const deletedUser = await UserModel.findByIdAndDelete(id);
 

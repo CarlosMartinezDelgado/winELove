@@ -43,6 +43,7 @@ router.get("/addWine", async (req, res, next) => {
         country,
         bio,
         type,
+        // user: ???
       });
       res.redirect("/main");
     } catch (err) {

@@ -36,13 +36,13 @@ const wineSchema = new Schema({
   image: {
     type: String,
   },
-  comment: {
-    type: Schema.Types.ObjectId,
-    ref: "Comment"
-  },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
+  // comment: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Comment"
+  // },
+  userId: {
+     type: Schema.Types.ObjectId,
+     ref: "User"
   }
   
 });

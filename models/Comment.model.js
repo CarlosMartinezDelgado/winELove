@@ -9,7 +9,7 @@ const wineSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Wine"
   },
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
     ref: "User"
   }
