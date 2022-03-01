@@ -13,7 +13,7 @@ const wines = [
       5: "Albillo",
     },
     vintage: "1962",
-    image: "../public/images/wines/",
+    image: "/images/wines/",
   },
   {
     aging: "Great Reserve",
@@ -23,7 +23,7 @@ const wines = [
     type: "Red Wine",
     grapes: { 1: "Cabernet Sauvignon", 2: "Merlot", 3: "Tempranillo" },
     vintage: "2018",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Crianza",
@@ -33,7 +33,7 @@ const wines = [
     type: "Red Wine",
     grapes: { 1: "Tempranillo", 2: "Garnacha", 3: "Graciano" },
     vintage: "2017",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Crianza",
@@ -43,7 +43,7 @@ const wines = [
     type: "Red Wine",
     grapes: { 1: "Mencia" },
     vintage: "2018",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Crianza",
@@ -53,7 +53,7 @@ const wines = [
     type: "Red Wine",
     grapes: { 1: "Garnacha", 2: "Cariñena" },
     vintage: "2016",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Great Reserve",
@@ -68,7 +68,7 @@ const wines = [
       4: "Tempranillo",
     },
     vintage: "2010",
-    image: "../public/images/wines/Castillo Ygay.webp",
+    image: "/images/wines/Castillo Ygay.webp",
   },
   {
     aging: "Reserve",
@@ -78,7 +78,7 @@ const wines = [
     type: "Red Wine",
     grapes: { 1: "Pinot Noir" },
     vintage: "2016",
-    image: "../public/images/wines/Aubert.jpeg",
+    image: "/images/wines/Aubert.jpeg",
   },
   {
     aging: "Crianza",
@@ -86,9 +86,9 @@ const wines = [
     country: "Italien",
     name: "San Filippo",
     type: "Red Wine",
-    grapes: { 1: "Sangiovese" },
+    grapes: ["Sangiovese"],
     vintage: "2017",
-    image: "../public/images/wines/San Filippo.webp",
+    image: "/images/wines/San Filippo.webp",
   },
   {
     aging: "Crianza",
@@ -96,9 +96,9 @@ const wines = [
     country: "USA",
     name: "Macayamas",
     type: "Red Wine",
-    grapes: { 1: "Cabernet Sauvignon" },
+    grapes: ["Cabernet Sauvignon"],
     vintage: "2016",
-    image: "../public/images/wines/Macayamas.jpeg",
+    image: "/images/wines/Macayamas.jpeg",
   },
   {
     aging: "Reserve",
@@ -106,9 +106,9 @@ const wines = [
     country: "France",
     name: "Domaine de la Vieille Julienne",
     type: "Red Wine",
-    grapes: { 1: "Garnacha" },
+    grapes: ["Garnacha"],
     vintage: "2016",
-    image: "../public/images/wines/Vieille Julienne.png",
+    image: "/images/wines/Vieille Julienne.png",
   },
   {
     aging: "",
@@ -116,9 +116,9 @@ const wines = [
     country: "USA",
     name: "Kistler",
     type: "White Wine",
-    grapes: { 1: "Chardonnay" },
+    grapes: ["Chardonnay"],
     vintage: "2019",
-    image: "../public/images/wines/Kistler.png",
+    image: "/images/wines/Kistler.png",
   },
   {
     aging: "Crianza",
@@ -126,12 +126,9 @@ const wines = [
     country: "Argentina",
     name: "Los Chacayes",
     type: "Red Wine",
-    grapes: {
-      1: "Cabernet Sauvignon",
-      2: "Malbec",
-    },
+    grapes: ["Cabernet Sauvignon", "Malbec"],
     vintage: "2015",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Crianza",
@@ -139,9 +136,9 @@ const wines = [
     country: "New Zeland",
     name: "Allan Scott",
     type: "White Wine",
-    grapes: { 1: "Sauvignon Blanc" },
+    grapes: ["Sauvignon Blanc"],
     vintage: "2018",
-    image: "../public/images/wines/Allan Scott.png",
+    image: "/images/wines/Allan Scott.png",
   },
   {
     aging: "Reserve",
@@ -149,11 +146,9 @@ const wines = [
     country: "France",
     name: "Clos de Beze",
     type: "Red Wine",
-    grapes: {
-      1: "Pinot Noir",
-    },
+    grapes: ["Pinot Noir"],
     vintage: "2017",
-    image: "../public/images/wines/",
+    image: "/images/wines/",
   },
   {
     aging: "Crianza",
@@ -161,9 +156,9 @@ const wines = [
     country: "Australia",
     name: "Kalimna",
     type: "Red Wine",
-    grapes: { 1: "Shiraz" },
+    grapes: ["Shiraz"],
     vintage: "2018",
-    image: "../public/images/wines/",
+    image: "/images/wines/",
   },
   {
     aging: "Crianza",
@@ -171,9 +166,9 @@ const wines = [
     country: "Chile",
     name: "Los Vascos",
     type: "White Wine",
-    grapes: { 1: "Sauvignon Blanc" },
+    grapes: ["Sauvignon Blanc"],
     vintage: "2020",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Crianza",
@@ -181,9 +176,9 @@ const wines = [
     country: "Spain",
     name: "La Faraona",
     type: "Red Wine",
-    grapes: { 1: "Mencia" },
+    grapes: ["Mencia"],
     vintage: "2018",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Crianza",
@@ -191,9 +186,9 @@ const wines = [
     country: "Spain",
     name: "L'Ermita",
     type: "Red Wine",
-    grapes: { 1: "Garnacha", 2: "Cariñena" },
+    grapes: ["Garnacha", "Cariñena"],
     vintage: "2016",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Great Reserve",
@@ -201,14 +196,9 @@ const wines = [
     country: "Spain",
     name: "Castillo Ygay",
     type: "Red Wine",
-    grapes: {
-      1: "Cabernet Sauvignon",
-      2: "Malbec",
-      3: "Merlot",
-      4: "Tempranillo",
-    },
+    grapes: [ "Cabernet Sauvignon","Malbec","Merlot","Tempranillo"],
     vintage: "2010",
-    image: "../public/images/wines/Castillo Ygay.webp",
+    image: "/images/wines/Castillo Ygay.webp",
   },
   {
     aging: "Reserve",
@@ -216,9 +206,9 @@ const wines = [
     country: "USA",
     name: "Aubert UV-SL",
     type: "Red Wine",
-    grapes: { 1: "Pinot Noir" },
+    grapes: ["Pinot Noir"],
     vintage: "2016",
-    image: "../public/images/wines/Aubert.jpeg",
+    image: "/images/wines/Aubert.jpeg",
   },
   {
     aging: "Crianza",
@@ -228,7 +218,7 @@ const wines = [
     type: "Red Wine",
     grapes: { 1: "Sangiovese" },
     vintage: "2017",
-    image: "../public/images/wines/San Filippo.webp",
+    image: "/images/wines/San Filippo.webp",
   },
   {
     aging: "Crianza",
@@ -238,7 +228,7 @@ const wines = [
     type: "Red Wine",
     grapes: { 1: "Cabernet Sauvignon" },
     vintage: "2016",
-    image: "../public/images/wines/Macayamas.jpeg",
+    image: "/images/wines/Macayamas.jpeg",
   },
   {
     aging: "Reserve",
@@ -246,9 +236,9 @@ const wines = [
     country: "France",
     name: "Domaine de la Vieille Julienne",
     type: "Red Wine",
-    grapes: { 1: "Garnacha" },
+    grapes: ["Garnacha"],
     vintage: "2016",
-    image: "../public/images/wines/Vieille Julienne.png",
+    image: "/images/wines/Vieille Julienne.png",
   },
   {
     aging: "",
@@ -256,9 +246,9 @@ const wines = [
     country: "USA",
     name: "Kistler",
     type: "White Wine",
-    grapes: { 1: "Chardonnay" },
+    grapes: ["Chardonnay"],
     vintage: "2019",
-    image: "../public/images/wines/Kistler.png",
+    image: "/images/wines/Kistler.png",
   },
   {
     aging: "Crianza",
@@ -266,12 +256,9 @@ const wines = [
     country: "Argentina",
     name: "Los Chacayes",
     type: "Red Wine",
-    grapes: {
-      1: "Cabernet Sauvignon",
-      2: "Malbec",
-    },
+    grapes: ["Cabernet Sauvignon", "Malbec"],
     vintage: "2015",
-    image: "../public/images/wines/Chacayes.png",
+    image: "/images/wines/Chacayes.png",
   },
   {
     aging: "Reserve",
@@ -281,17 +268,17 @@ const wines = [
     type: "White Wine",
     grapes: { 1: "Sauvignon Blanc" },
     vintage: "2018",
-    image: "../public/images/wines/Allan Scott.png",
+    image: "/images/wines/Allan Scott.png",
   },
 ];
 
 const Wine = require("../models/Wine.model");
 
-// insertarla en la BD
+// insertar en la BD
 const mongoose = require("mongoose");
 
 mongoose
-  .connect("mongodb://localhost/wine-project")
+  .connect()
   .then((response) => {
     console.log("conectados a la BD");
 
@@ -300,7 +287,6 @@ mongoose
   .then((response) => {
     console.log("Wines agregados correctamente");
 
-    // ? hacer la desconexion
     mongoose.connection.close();
   })
   .catch((err) => {
