@@ -16,41 +16,51 @@ router.get("/", (req, res, next) => {
   res.render("main/main.hbs")
 })
 
-router.get("/profile", (req, res, next) => {
-  res.render("main/profile.hbs")
+router.get("/profile", isLoggedIn, async (req, res, next) => {
+
+  // buscan la info del usuario y la pasan a profile.hbs
+    
+  const id = req.session.user._id;
+
+  try {
+  const currentUser = await UserModel.findById(id)
+
+    res.render("main/profile.hbs", {currentUser})
+  }
+  catch (err) {
+    next(err)
+  }
 })
   
 
 // Edit Profile -- -Editar el perfil
-  router.get("/:id/edit", async (req, res, next) => {
-  try {
-    const { id } = req.params;
-
-    const userProfile = await UserModel.findById(id);
-    // console.log(oneProfile);
-    // render edit-form view
-    res.render("main/edit-profile.hbs", { userProfile });
+  router.get("/edit", isLoggedIn, async (req, res, next) => {
+  
+    const id = req.session.user._id // el id no deberia venir por params sino por req.ression.user._id
+    try {
+    
+    const userProfile = await UserModel.findByIdAndUpdate(id);
+    // console.log(userProfile);
+      res.render("main/edit-profile.hbs", { userProfile });
   } catch (err) {
     next(err);
   }
 });
 
-router.post("/:id/edit", async (req, res, next) => {
-  const { id } = req.params; 
-  const { name, aging, grapes, vintage, country, bio, type } = req.body;
-
-  //indByIdAndUpdate needs 2 parameters
+router.post("/id/edit", async (req, res, next) => {
+  const id = req.session.user._id;
+  const { username, password, email, nickname, country, image, comment } = req.body;
   try {
     const updatedProfile = await UserModel.findByIdAndUpdate(id, {
-      name,
-      aging,
-      grapes,
-      vintage,
+      username,
+      email,
+      password,
+      nickname,
       country,
-      bio,
-      type,
+      image,
+      comment,
     });
-    res.redirect(`/wines/${updatedProfile._id}/edit`);
+    res.redirect(`/main/${updatedProfile}/edit`);
   } catch (err) {
     next(err);
   }
@@ -58,8 +68,7 @@ router.post("/:id/edit", async (req, res, next) => {
 
 
   router.post("/:id/delete", async (req, res, next) => {
-    //Promises con async
-
+    
     try {
       
       const { id } = req.params;
@@ -72,8 +81,6 @@ router.post("/:id/edit", async (req, res, next) => {
       next(err);
     }
   });
-
-
 
 
 module.exports = router;

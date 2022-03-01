@@ -22,6 +22,9 @@ const userSchema = new Schema(
     country: {
       type: String,
     },
+    image: {
+      type: String,
+    },
     comment: 
     [
       {

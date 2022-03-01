@@ -118,7 +118,7 @@ router.post("/login", isLoggedOut, async (req, res, next) => {
       })
     }
 
-    req.session.user = emailUser
+    req.session.user = emailUser // ESTO ES SUPER IMPORTANTE
     req.app.locals.isLoggedIn = true // req.app.locals. es una variable local
     
     if (emailUser.role === "admin") {
@@ -141,6 +141,7 @@ router.get("/logout", (req, res, next) => {
 
   res.redirect("/")
 })
+
 
 
 module.exports = router;
