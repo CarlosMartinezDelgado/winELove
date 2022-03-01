@@ -34,8 +34,18 @@ router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
 }),
 
   //POST "/wines/create"
+  
   router.post("/addWine", isLoggedAdmin, async (req, res, next) => {
     const { name, aging, grapes, vintage, country, bio, type, userId } = req.body;
+  
+    if (!name || !aging || !grapes|| !vintage || !type ) {
+    return res
+    .status(400)
+    .render("wine/addWine", {
+      errorMessage: "Please fill all fields.",
+    });
+  }
+
     try {
       await WineModel.create({
         name,
@@ -53,7 +63,7 @@ router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
     }
   });
   
-  router.get("/:id", isLoggedAdmin, async (req, res, next) => {
+  router.get("/:id", isLoggedIn, async (req, res, next) => {
     const id = req.params.id;
     const wineDetails = await WineModel.findById(id);
     try {

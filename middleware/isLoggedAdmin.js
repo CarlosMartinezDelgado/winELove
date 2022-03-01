@@ -1,10 +1,10 @@
 
-const isAdmin = ((req,res,next) => {
-  if( req.session.user.role){
+const isLoggedAdmin = ((req,res,next) => {
+  if( req.session.user.role === 'admin'){
     next();
   }else{
-    res.redirect ("auth/admin")
+    res.redirect ("/main")
   }
 })
 
-module.exports = isAdmin
+module.exports = isLoggedAdmin
