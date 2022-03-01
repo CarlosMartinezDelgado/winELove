@@ -12,7 +12,7 @@ const isLoggedAdmin = require("../middleware/isLoggedAdmin");
 
 // Show all wines --- Muestra todos los vinos
 
-router.get("/", async (req, res, next) => {
+router.get("/", isLoggedIn, async (req, res, next) => {
   const allWines = await WineModel.find();
   try {
     res.render("wine/allWines", {allWines})
@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
 
 // GET "/wine/create"
 
-router.get("/addWine", async (req, res, next) => {
+router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
   const addWine = await WineModel.find();
   try {
     res.render("wine/addWine.hbs", { addWine });
@@ -34,8 +34,8 @@ router.get("/addWine", async (req, res, next) => {
 }),
 
   //POST "/wines/create"
-  router.post("/addWine", async (req, res, next) => {
-    const { name, aging, grapes, vintage, country, bio, type } = req.body;
+  router.post("/addWine", isLoggedAdmin, async (req, res, next) => {
+    const { name, aging, grapes, vintage, country, bio, type, userId } = req.body;
     try {
       await WineModel.create({
         name,
@@ -45,15 +45,15 @@ router.get("/addWine", async (req, res, next) => {
         country,
         bio,
         type,
-        // user: ???
+        userId: req.session.user._id, 
       });
       res.redirect("/main");
     } catch (err) {
-      next(err);
+      next(err); //add fill all fields
     }
   });
   
-  router.get("/:id", async (req, res, next) => {
+  router.get("/:id", isLoggedAdmin, async (req, res, next) => {
     const id = req.params.id;
     const wineDetails = await WineModel.findById(id);
     try {
@@ -64,7 +64,7 @@ router.get("/addWine", async (req, res, next) => {
   })
 
 // Edit wines -- -Editar los vinos
-  router.get("/:id/edit", async (req, res, next) => {
+  router.get("/:id/edit", isLoggedAdmin, async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -77,10 +77,10 @@ router.get("/addWine", async (req, res, next) => {
   }
 });
 
-router.post("/:id/edit", async (req, res, next) => {
+router.post("/:id/edit", isLoggedAdmin, async (req, res, next) => {
   const { id } = req.params; 
-  const { name, aging, grapes, vintage, country, bio, type } = req.body;
-
+  const { name, aging, grapes, vintage, country, bio, type, userId } = req.body;
+  
   //indByIdAndUpdate needs 2 parameters
   try {
     const updatedWine = await WineModel.findByIdAndUpdate(id, {
@@ -91,6 +91,7 @@ router.post("/:id/edit", async (req, res, next) => {
       country,
       bio,
       type,
+      userId: req.session.user._id,
     });
     res.redirect(`/wines/${updatedWine._id}/edit`);
   } catch (err) {
@@ -99,7 +100,7 @@ router.post("/:id/edit", async (req, res, next) => {
 }),
 
 
-  router.post("/:id/delete", async (req, res, next) => {
+  router.post("/:id/delete", isLoggedAdmin, async (req, res, next) => {
     //Promises con async
 
     try {
