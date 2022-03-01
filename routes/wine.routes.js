@@ -8,8 +8,10 @@ const CommentModel = require("../models/Comment.model");
 // Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
+const isLoggedAdmin = require("../middleware/isLoggedAdmin");
 
 // Show all wines --- Muestra todos los vinos
+
 router.get("/", async (req, res, next) => {
   const allWines = await WineModel.find();
   try {
