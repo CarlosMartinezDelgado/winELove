@@ -1,34 +1,54 @@
 <div class="logo">
   <h1>
-     <img src="./images/logo_small.png" alt="logo" width="150px"> </h1>
-<p>Welcome to find, learn and enjoy wine!</p>
-
+    <img src="./images/logo_small.png" alt="logo" width="150px">
+  </h1>
+  <p>Welcome to find, learn and enjoy wine!</p>
 </div>
 
-<div class= "cuadro">
-  WELCOME
-  <article>
-    <blockquote id="welcome">
-      If you are interested in world wine, you’ve come to the right place. <br>
-      Lovewine is a bilingual English-Spanish website. It was launched in
-      Febrary 2022 by developers Eduard Cabrero and Carlos Martinez with the aim
-      of spreading the word about the world of wines.<br> We focus on the diversity
-      of lands, grape varieties and wine styles in the world, as well as on the
-      people behind the wines. Lovewine covers both traditional, long-standing
-      producers and the new generation of winegrowers and winemakers who are
-      brilliantly reshaping the future of wines.<br> Lovewine is the gateway to
-      find, learn and enjoy wine. To make things easier for you, the information
-      we provide has been organised in three main areas: Find wine's worldwide.
-      Our contributors based in different countries will help you discover the
-      best places to enjoy wine. From Chile to Australia, through France, Germany, Italy, South Africa, California and many other places.<br> Learn about wines. This is our on-line magazine with news, trends… And you can also access our database of: Tasting
-      notes A database featuring all wines tasted and rated by the lovEWine team
-      with detailed information about each of them. And remember that you can
-      search for any information at any time.<br> Just click on the search box at
-      the top of the page if you want to search the entire site, use the
-      specific search boxes for our different sections and, of course, we will
-      be very happy to receive your suggestions and comments. <br> Subscribe to our
-      weekly newsletter to get the latest updates and follow us on social media.
-      To get in touch with us, just go to the <b>Contact section</b>.</blockquote>
-  </article>
+<div id="template-bg-1">
+<form action="/auth/login" method="POST">
+  <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card p-4 text-light bg-dark mb-5">
+      <div class="card-header">
+        <h3>Login</h3>
+      </div>
+      <div class="card-body w-100">
+        <form name="login" action="" method="post">
+          <div class="input-group form-group mt-3">
+            <div class="bg-secondary rounded-start">
+              <span class="m-3"><i class="fas fa-user mt-2"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username" name="username">
+          </div>
+          <div class="input-group form-group mt-3">
+            <div class="bg-secondary rounded-start">
+              <span class="m-3"><i class="fas fa-user mt-2"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Email" name="email">
+          </div>
+          <div class="input-group form-group mt-3">
+            <div class="bg-secondary rounded-start">
+              <span class="m-3"><i class="fas fa-key mt-2"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="Password" name="password">
+          </div>
+
+          <div class="form-group mt-3">
+            <input type="submit" value="Join" class="btn bg-secondary float-end text-white w-100" name="login-btn">
+          </div>
+        </form>
+       </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center">
+          <div class="text-primary">If you are not registered enter now and discover <span > <a style="color: yellow" href="/auth/signup">lovEWine.</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{{#if errorMessage}}
+   <p>{{errorMessage}}</p>
+{{/if}}
 
 </div>

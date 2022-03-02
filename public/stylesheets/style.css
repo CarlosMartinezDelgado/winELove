@@ -3,10 +3,34 @@ font-family: 'Hubballi', cursive;
 font-family: 'Smooch Sans', sans-serif; */
 
 
+
 body {
   background-image: url(../images/BG_Main.png);
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.home_nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: normal;
+  align-content: center;
+}
+
+#logo_only {
+  padding-left: 10px;
+}
+
+#sign_log {
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;  
 }
 
 a {
@@ -18,26 +42,26 @@ h1 {
 }
 
 #welcome {
-
+  
 }
 
 .cuadro {
-width:450px;
-margin:10px 50px;
-padding:20px;
-font-size:italic;
-background-color:#cfc;
-color:#000;
+  width:450px;
+  margin:10px 50px;
+  padding:20px;
+  font-size:italic;
+  background-color:#cfc;
+  color:#000;
 }
 
 #etiqueta {
   width: 110px;
   text-align:center;
-
+  
 }
 
 .logo {
-padding-left: 55px;
+  padding-left: 55px;
 }
 
 .main {
@@ -47,12 +71,17 @@ padding-left: 55px;
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
-
+  
 }
 
 #main {
   border-style: double;
-
+  
 }
 #wines-recomend {}
 
+
+
+#space {
+  padding: 10px;
+}

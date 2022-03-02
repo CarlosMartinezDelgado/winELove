@@ -17,14 +17,14 @@
 
 <body>
   <nav id="nav-index" class="navbar navbar-light bg-light">
-    <div>
-      <img src="./images/logo_small.png" alt="profile" width="60px" height="40px">
+    <div id="logo_only" class="home_nav">
+      <img src="./images/logo_only.png" alt="profile" width="50px" height="50px">
     </div>
 
     {{#if isLoggedOut}}
-    <div class="container-fluid justify-content-start">
+    <div id="sign_log" class="home_nav" class="container-fluid justify-content-start">
       <a href="/auth/signup"><button class="btn btn-outline-success me-2" type="button">Sign up</button></a>
-
+      <div id="space"></div>
       <a href="/auth/login"><button class="btn btn-outline-success me-2" type="button">Login</button></a>
     </div>
     {{else}}
