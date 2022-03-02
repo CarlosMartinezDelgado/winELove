@@ -112,9 +112,7 @@ router.post("/:id/edit", isLoggedAdmin, async (req, res, next) => {
 
   router.post("/:id/delete", isLoggedAdmin, async (req, res, next) => {
     //Promises con async
-
     try {
-      
       const { id } = req.params;
 
       //Delete element from db
