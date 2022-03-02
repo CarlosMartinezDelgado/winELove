@@ -1,4 +1,5 @@
 body {
+  background-image: url(../images/BG_Main.png);
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -33,3 +34,20 @@ color:#000;
 .logo {
 padding-left: 55px;
 }
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+
+}
+
+#main {
+  border-style: double;
+
+}
+#wines-recomend {}
+
