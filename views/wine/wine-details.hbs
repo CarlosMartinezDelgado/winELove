@@ -1,32 +1,77 @@
 
-
-<div class="card">
-  <div class="card-header">
-  <h4>Name: {{wineDetails.name}}</h4>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{wineDetails.image}}" class="img-fluid rounded-start" alt="wine image">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{wineDetails.name}}</h5>
+        <p class="card-text">
+          <ul>
+            <li>{{wineDetails.type}}</li>
+            <li>{{wineDetails.grapes}}</li>
+            <li>{{wineDetails.country}}</li>
+            <li>{{wineDetails.aging}}</li>
+            <li>{{wineDetails.vintage}}</li>
+            
+          </ul>
+        </p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
   </div>
 
-  <div class="card-body">
-  <p>Grapes: {{wineDetails.grapes}}</p>
-  
-  <p>Wine: {{this.name}} from {{this.country}} with grapes {{this.grapes}}</p>
+  <p>
+    <div class="form-floating">
+      <textarea
+        class="form-control"
+        placeholder="Leave a comment here"
+        id="floatingTextarea2"
+        style="height: 100px"
+        bg="dark"
+      ></textarea>
+      <label for="floatingTextarea2">Comments</label>
+    </div>
+  </p>
 
-  
-  
-  <form method="POST" action="/wines/{{wineDetails._id}}/edit">
-    <button class="btn btn-outline-warning">Edit</button>
-  </form>
-  
-  <form method="POST" action="/wines/{{wineDetails._id}}/delete">
-  <button class="btn btn-outline-danger">Delete</button>
-  </form>
-  
+    {{#if isLoggedAdmin}}
+      <form method="POST" action="/wines/{{wineDetails._id}}/edit">
+        <button class="btn btn-outline-warning">Edit</button>
+      </form>
+
+      <form method="POST" action="/wines/{{wineDetails._id}}/delete">
+        <button class="btn btn-outline-danger">Delete</button>
+      </form>
+    {{/if}}
   </div>
-  
 
+</div>
+<div id="comment-label">
+  <button type="button" class="btn btn-secondary" type="submit">Submit</button>
 </div>
 
 
-{{!-- CARD FOR WINES
+
+{{!-- <div class="wineDetails" class="card">
+  <div class="card-header">
+    <h4>Name: {{wineDetails.name}}</h4>
+  </div>
+
+  <div class="card-body">
+    <p>Grapes: {{wineDetails.grapes}}</p>
+
+    <p>Wine: {{this.name}} from {{this.country}} with grapes {{this.grapes}}</p>
+
+
+    {{!-- <form method="POST" action="/wines/{{wineDetails._id}}/delete">
+      <button class="btn btn-outline-danger">Summit</button>
+    </form> --}}
+
+
+{{!-- </div> --}}
+
+{{! CARD FOR WINES
 <div class="card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
@@ -40,4 +85,4 @@
       </div>
     </div>
   </div>
-</div> --}}
+</div> }}

@@ -1,57 +1,50 @@
+<div class="logo">
+  <h1>
+    <img src="./images/logo_small.png" alt="logo" width="150px">
+  </h1>
+  <p>Welcome to find, learn and enjoy wine!</p>
+</div>
 
-<h2>Login</h2>
-<div id="create-form" style="width: 30rem">
-<form action="/auth/login" method="POST">
+<div id="template-bg-1">
+<form action="/" method="POST">
+  <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+    <div class="card p-4 text-light bg-dark mb-5">
+      <div class="card-header">
+        <h3>Login</h3>
+      </div>
+      <div class="card-body w-100">
+        <form name="login" action="" method="post">
+          <div class="input-group form-group mt-3">
+            <div class="bg-secondary rounded-start">
+              <span class="m-3"><i class="fas fa-user mt-2"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Username" name="username">
+          </div>
+          <div class="input-group form-group mt-3">
+            <div class="bg-secondary rounded-start">
+              <span class="m-3"><i class="fas fa-user mt-2"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Email" name="email">
+          </div>
+          <div class="input-group form-group mt-3">
+            <div class="bg-secondary rounded-start">
+              <span class="m-3"><i class="fas fa-key mt-2"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Password" name="password">
+          </div>
 
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="username"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >User Name:</span>
-    <input
-      type="text"
-      name="username"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
+          <div class="form-group mt-3">
+            <input type="submit" value="Join" class="btn bg-secondary float-end text-white w-100" name="login-btn">
+          </div>
+        </form>
+       </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center">
+          <div class="text-primary">If you are not registered enter now and discover <span > <a style="color: yellow" href="/signup">lovEWine.</a></span></div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="email"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Email:</span>
-    <input
-      type="text"
-      name="email"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="password"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Password:</span>
-    <input
-      type="texts"
-      name="password"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  
-  <div id="etiqueta">
-    <button class="btn btn-outline-success">Enter</button>
-  </div>
-
 </form>
 
 {{#if errorMessage}}

@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 // Require the User model in order to interact with the database
 const UserModel = require("../models/User.model");
 
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+// Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
@@ -67,7 +67,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
       nickname,
       country,
     })
-    res.redirect("/auth/login")
+    res.redirect("/")
   } 
   catch (error) 
   {
@@ -75,11 +75,11 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
   }
 })
 
-router.get("/login", isLoggedOut, (req, res, next) => {
+router.get("/", isLoggedOut, (req, res, next) => {
   res.render("auth/login");
 });
 
-router.post("/login", isLoggedOut, async (req, res, next) => {
+router.post("/", isLoggedOut, async (req, res, next) => {
     //console.log(req.body);
     const {email, password} = req.body
 

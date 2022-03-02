@@ -3,14 +3,19 @@ font-family: 'Hubballi', cursive;
 font-family: 'Smooch Sans', sans-serif; */
 
 
-
 body {
+  
   background-image: url(../images/BG_Main.png);
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+#nav-index {
+  border-radius: 10px;
+}
+
 .home_nav {
+  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -32,6 +37,10 @@ body {
   align-items: center;
   align-content: center;  
 }
+
+/* .wineDetails{
+  padding-top: 50px;
+} */
 
 a {
   color: #00b7ff;
@@ -78,9 +87,20 @@ h1 {
   border-style: double;
   
 }
-#wines-recomend {}
 
 
+#comment-label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: normal;
+  padding-top: 20px;
+  padding-right: 10px;
+  background-color: transparent;
+  color: white;
+}
 
 #space {
   padding: 10px;

@@ -1,7 +1,7 @@
 
-<h2>Create a New User</h2>
+<h2>Login</h2>
 <div id="create-form" style="width: 30rem">
-<form action="/signup" method="POST">
+<form action="/auth/login" method="POST">
 
   <div class="input-group mb-3">
     <span id="etiqueta"
@@ -47,38 +47,9 @@
       aria-describedby="inputGroup-sizing-default"
     />
   </div>
-
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="nickname"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Nick Name:</span>
-    <input
-      type="text"
-      name="nickname"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="country"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Country:</span>
-    <input
-      type="text"
-      name="country"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-
+  
   <div id="etiqueta">
-    <button class="btn btn-outline-success">Crear</button>
+    <button class="btn btn-outline-success">Enter</button>
   </div>
 
 </form>
