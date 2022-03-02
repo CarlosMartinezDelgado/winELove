@@ -119,10 +119,12 @@ router.post("/login", isLoggedOut, async (req, res, next) => {
     }
 
     req.session.user = emailUser // ESTO ES SUPER IMPORTANTE
-    req.app.locals.isLoggedIn = true // req.app.locals. es una variable local
+    req.app.locals.isLoggedIn = true // req.app.locals. es una variable local que se puede acceder desde handlebars
+    req.app.locals.isLoggedOut = false
     
+
     if (emailUser.role === "admin") {
-    req.app.locals.isLoggedIn = true
+    req.app.locals.isLoggedAdmin = true
     }
     //*3 Redirect user to profile
     res.redirect("/main")  /// profile
@@ -137,7 +139,9 @@ router.post("/login", isLoggedOut, async (req, res, next) => {
 router.get("/logout", (req, res, next) => {
 
   req.session.destroy();
+  req.app.locals.isLoggedOut = true
   req.app.locals.isLoggedIn = false
+  req.app.locals.isLoggedAdmin = false
 
   res.redirect("/")
 })
