@@ -22,8 +22,9 @@
     </div>
   </div>
 
-  <p>
-    <div class="form-floating">
+  <div id="create-form" style="width: 30rem">
+  <form method="post" action="/comments/create">
+    {{!-- <div class="form-floating">
       <textarea
         class="form-control"
         placeholder="Leave a comment here"
@@ -32,8 +33,30 @@
         bg="dark"
       ></textarea>
       <label for="floatingTextarea2">Comments</label>
+    </div> --}}
+    <div class="input-group mb-3">
+      <span id="etiqueta"
+        for="name"
+        class="input-group-text"
+        id="inputGroup-sizing-default"
+        >Name:</span>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+      />
     </div>
-  </p>
+  
+    
+    <div id="comment-label">
+      <button type="button" class="btn btn-secondary" type="submit">EnteRO</button>
+    </div>
+
+
+  </form>
+  </div>
 
     {{#if isLoggedAdmin}}
       <form method="POST" action="/wines/{{wineDetails._id}}/edit">
@@ -47,9 +70,9 @@
   </div>
 
 </div>
-<div id="comment-label">
-  <button type="button" class="btn btn-secondary" type="submit">Submit</button>
-</div>
+{{!-- <div id="comment-label">
+  <button type="button" class="btn btn-secondary" type="submit">Enter</button>
+</div> --}}
 
 
 
