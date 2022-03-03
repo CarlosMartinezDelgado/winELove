@@ -4,15 +4,21 @@ font-family: 'Smooch Sans', sans-serif; */
 
 
 body {
-  color: white;
+  background-repeat: no-repeat;  
+  width: 1300px;
+  height: 1300px;
   background-image: url(../images/BG_Main.png);
   padding: 50px;
-  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
-  font-family: 'Hubballi', cursive;
-  font-size: large;
+  color: white;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-#nav-index {
+a {
+   color: white;
+ }
+
+
+#nav-index img {
   border-radius: 10px;
 }
 
@@ -30,6 +36,12 @@ body {
   padding-left: 10px;
 }
 
+.list-group  {
+
+  color: rgb(23, 23, 24);
+  border: 10px;
+
+}
 #sign_log {
   padding-right: 10px;
   display: flex;
@@ -52,8 +64,22 @@ h1 {
   color: 15px;
 }
 
-#welcome {
+#create-form span {
+  background-color: rgb(33, 37, 32);
+  color: white;
   
+}
+
+#profile {
+  background-color: rgb(33, 37, 32);
+  color: white;
+
+}
+
+#profile2 {
+  background-color: rgb(33, 37, 32);
+  color: rgb(219, 53, 53);
+
 }
 
 .cuadro {
@@ -72,7 +98,9 @@ h1 {
 }
 
 .logo {
-  padding-left: 55px;
+  padding-left: 355px;
+  text-align:center;
+
 }
 
 .main {

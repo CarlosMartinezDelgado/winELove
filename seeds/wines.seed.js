@@ -8,7 +8,7 @@ const wines = [
     type: "White Wine",
     grapes:["Godello"],
     vintage: "2020",
-    image: "../public/images/Viña Godeval.jpeg",
+    image: "/images/Viña Godeval.jpeg",
   },
   {
     aging: "Great Reserve",
@@ -18,7 +18,7 @@ const wines = [
     type: "White Wine",
     grapes:["Chardonnay"],
     vintage: "2020",
-    image: "../public/images/Joel_Gott.webp"
+    image: "/images/Joel_Gott.webp"
   },
   {
     aging: "Crianza",
@@ -28,7 +28,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Tempranillo", "Garnacha", "Graciano"],
     vintage: "2017",
-    image: "../public/images/LAS_BEATAS.jpeg"
+    image: "/images/LAS_BEATAS.jpeg"
   },
   {
     aging: "Crianza",
@@ -38,7 +38,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Mencia"],
     vintage: "2018",
-    image: "../public/images/La_Faraona.jpeg",
+    image: "/images/La_Faraona.jpeg",
   },
   {
     aging: "Crianza",
@@ -48,7 +48,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Gewürztraminer"],
     vintage: "2021",
-    image: "../public/images/Nussbaumer.jpeg",
+    image: "/images/Nussbaumer.jpeg",
   },
   {
     aging: "Reserve",
@@ -58,7 +58,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Pinot Noir"],
     vintage: "2016",
-    image: "../public/images/Ken_Wright.jpeg",
+    image: "/images/Ken_Wright.jpeg",
   },
   {
     aging: "Reserve",
@@ -68,7 +68,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Pinot Noir"],
     vintage: "2016",
-    image: "../public/images/Aubert.png"
+    image: "/images/Aubert.png"
   },
   {
     aging: "Crianza",
@@ -78,7 +78,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Sangiovese"],
     vintage: "2017",
-    image: "../public/images/san_filippo.webp",
+    image: "/images/san_filippo.webp",
   },
   {
     aging: "Crianza",
@@ -88,7 +88,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Cabernet Sauvignon"],
     vintage: "2015",
-    image: "../public/images/mayacamas.png",
+    image: "/images/mayacamas.png",
   },
   {
     aging: "Reserve",
@@ -98,7 +98,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Garnacha"],
     vintage: "2016",
-    image: "../public/images/Vielle_Julienne.png",
+    image: "/images/Vielle_Julienne.png",
   },
   {
     aging: "Crianza",
@@ -108,7 +108,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Chardonnay"],
     vintage: "2019",
-    image: "../public/images/Kistler.webp",
+    image: "/images/Kistler.webp",
   },
   {
     aging: "Crianza",
@@ -118,7 +118,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Cabernet Sauvignon", "Malbec"],
     vintage: "2015",
-    image: "../public/images/Los_Chacayes.jpeg",
+    image: "/images/Los_Chacayes.jpeg",
   },
   {
     aging: "Crianza",
@@ -128,7 +128,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Sauvignon Blanc"],
     vintage: "2018",
-    image: "../public/images/Allan_Scott.png",
+    image: "/images/Allan_Scott.png",
   },
   {
     aging: "Reserve",
@@ -138,7 +138,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Pinot Noir"],
     vintage: "2008",
-    image: "../public/images/Clos-de-Beze.jpeg",
+    image: "/images/Clos-de-Beze.jpeg",
   },
   {
     aging: "Crianza",
@@ -148,7 +148,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Shiraz"],
     vintage: "2019",
-    image: "../public/images/kalimna.png",
+    image: "/images/kalimna.png",
   },
   {
     aging: "Crianza",
@@ -158,7 +158,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Sauvignon Blanc"],
     vintage: "2020",
-    image: "../public/images/los_vascos.png",
+    image: "/images/los_vascos.png",
   },
   {
     aging: "Reserve",
@@ -168,7 +168,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Riesling"],
     vintage: "2018",
-    image: "../public/images/Trimbrach.webp",
+    image: "/images/Trimbrach.webp",
   },
   {
     aging: "Crianza",
@@ -178,7 +178,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Sangiovese"],
     vintage: "2016",
-    image: "../public/images/boscarelli.png",
+    image: "/images/boscarelli.png",
   },
   {
     aging: "Reserve",
@@ -188,7 +188,7 @@ const wines = [
     type: "Red Wine",
     grapes: [ "Cabernet Sauvignon","Malbec","Merlot","Syrah"],
     vintage: "2012",
-    image: "../public/images/bousquet.png",
+    image: "/images/bousquet.png",
   },
   {
     aging: "Reserve",
@@ -198,7 +198,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Cabernet Sauvignon","Merlot"],
     vintage: "2016",
-    image: "../public/images/Vasse_Felix.png",
+    image: "/images/Vasse_Felix.png",
   },
   {
     aging: "Crianza",
@@ -208,7 +208,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Sauvignon Blanc"],
     vintage: "2018",
-    image: "../public/images/Southern-Rigth.png",
+    image: "/images/Southern-Rigth.png",
   },
   {
     aging: "Crianza",
@@ -218,7 +218,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Sauvignon Blanc"],
     vintage: "2020",
-    image: "../public/images/Invivo.png",
+    image: "/images/Invivo.png",
   },
   {
     aging: "Reserve",
@@ -228,17 +228,17 @@ const wines = [
     type: "Red Wine",
     grapes: ["Garnacha"],
     vintage: "2016",
-    image: "../public/images/Vielle_Julienne.png",
+    image: "/images/Vielle_Julienne.png",
   },
   {
-    aging: "",
+    aging: "Crianza",
     bio: true,
     country: "USA",
     name: "Kistler",
     type: "White Wine",
     grapes: ["Chardonnay"],
     vintage: "2019",
-    image: "../public/images/Kistler.webp",
+    image: "/images/Kistler.webp",
   },
   {
     aging: "Crianza",
@@ -248,7 +248,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Malbec"],
     vintage: "2018",
-    image: "../public/images/luigi-bosca.jpeg",
+    image: "/images/luigi-bosca.jpeg",
   },
 ];
 
@@ -258,7 +258,7 @@ const Wine = require("../models/Wine.model");
 const mongoose = require("mongoose");
 
 mongoose
-  .connect()
+  .connect("mongodb://localhost/wine-project")
   .then((response) => {
     console.log("conectados a la BD");
 
