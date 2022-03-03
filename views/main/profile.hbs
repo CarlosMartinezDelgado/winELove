@@ -1,15 +1,15 @@
 
-<h2 style="color:rgb(63, 63, 233)">{{currentUser.nickname}}</h2>
+<h2 style="color:rgb(236, 236, 241)">{{currentUser.nickname}}</h2>
 
-<div id="create-form" style="width: 30rem">
+<div id="create-form" style="width: 30rem" >
   <div class="input-group mb-3">
     <span id="etiqueta"
       for="username"
       class="input-group-text"
       id="inputGroup-sizing-default"
     >User Name:</span>
-    <input
-      type=""
+    <input id="profile"
+      type="text"
       name="username"
       value="{{currentUser.username}}"
       class="form-control"
@@ -24,7 +24,7 @@
       class="input-group-text"
       id="inputGroup-sizing-default"
     >Email:</span>
-    <input
+    <input id="profile"
       type="text"
       name="email"
       value="{{currentUser.email}}"
@@ -40,7 +40,7 @@
       class="input-group-text"
       id="inputGroup-sizing-default"
     >Password:</span>
-    <input
+    <input id="profile"
       type="texts"
       name="password"
       value="**********************"
@@ -56,7 +56,7 @@
       class="input-group-text"
       id="inputGroup-sizing-default"
     >Country:</span>
-    <input
+    <input id="profile"
       type="text"
       name="country"
       value="{{currentUser.country}}"
