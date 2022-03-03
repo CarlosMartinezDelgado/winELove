@@ -10,13 +10,13 @@ const wineSchema = new Schema({
     type: String,
     required: true,
   },
-  grapes: 
-  {
-    type: String,
-    enum: ["Cabernet Sauvignon", "Malbec", "Merlot", "Tempranillo", "Albillo", "Pinot Noir","Cariñena", "Garnacha", "Syrah", "Chardonnay", "Sauvignon Blanc", "Airen", "Verdejo", "Albariño", "Kyoho", "Sultanina", "Red Globe", "Blauer Burgunder", "Trebbiano Toscano", "Ugni Blanc", "Carmenère", "Riesling", "Gewürztraminer", "Sémillon"],
-    required: true, 
-
-  },
+  grapes: [
+    {
+      type: String,
+      enum: ["Godello","Cabernet Sauvignon", "Malbec", "Merlot", "Tempranillo", "Albillo", "Pinot Noir","Cariñena", "Garnacha", "Syrah", "Chardonnay", "Sauvignon Blanc", "Airen", "Verdejo", "Albariño", "Kyoho", "Sultanina", "Red Globe", "Blauer Burgunder", "Trebbiano Toscano", "Ugni Blanc", "Carmenère", "Riesling", "Gewürztraminer", "Sémillon", "Graciano", "Mencia", "Sangiovese", "Shiraz"],
+      required: true, 
+    }
+  ],
   
   vintage: {
     type: Number,
