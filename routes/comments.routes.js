@@ -26,49 +26,46 @@ router.get('/create', isLoggedIn, async (req, res, next) => {
 router.post('/create/:wineId', isLoggedIn, async (req, res, next) => {
   const {text} = req.body;
   const {wineId} = req.params
-  const {userId} = req.session.user._id
+  const {_id} = req.session.user
 
-  console.log(text);
   try {
     await CommentModel.create({
       text,
       wineId,
-      userId,
+      userId: _id
     });
-    
-    
-    res.redirect("/main");
+    res.redirect(`/wines`);
   } catch (err) {
     next(err);
   }
 });
 
-// Edit comments
-  router.get("/:id/edit", isLoggedAdmin, async (req, res, next) => {
-  try {
-    const { id } = req.params;
-
-    const oneComment = await CommentModel.findById(id);
-   
-    res.render("wine/edit-wine.hbs", { oneComment });
-  } catch (err) {
-    next(err);
-  }
-});
-
-
-  router.post("/:id/delete", isLoggedAdmin, async (req, res, next) => {
-        try {
+  router.post("/:id/delete", isLoggedIn, async (req, res, next) => {
+     //Promises con async
+     try {
       const { id } = req.params;
 
-    
-      const deleteComment = await CommentModel.findByIdAndDelete(id);
+      // checkear si el usuario logeado es el creador del comentario
 
-     res.redirect("/main/profile");
+      // id usuario req.session
+      const userIdSession = req.session.user._id
+
+      // id usuario creador comentario
+      const comment = await CommentModel.findById(id)
+      // para comparar ids no se debe usar comparacion estricta
+      if(userIdSession != comment.userId) {
+        return res
+        .redirect(`/wines/${comment.wineId}`)
+      } else {
+        // Esto será para ya borrar el elemento
+        await CommentModel.findByIdAndDelete(id);
+  
+         res.redirect(`/wines/${comment.wineId}`);
+      }
+
     } catch (err) {
       next(err);
     }
   });
 
-  
 module.exports = router;

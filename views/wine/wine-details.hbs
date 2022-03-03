@@ -62,8 +62,16 @@
 <div>
     
     {{#each allComments}}
+      <div>
       <p>{{this.userId.nickname}}</p>
       <p>{{this.text}}</p>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+        <form method="POST" action="/comments/{{this._id}}/delete">
+        <button type="submit" class="btn btn-secondary">X</button>
+        </form>
+        </div>
+      </div>
+      
     {{/each}}
 
   
