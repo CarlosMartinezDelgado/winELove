@@ -31,7 +31,7 @@ const wineSchema = new Schema({
   type: 
   {
     type: String,
-    enum: ["Red wine", "White wine", "Rosse wine"],
+    enum: ["Red Wine", "White Wine", "Rosse Wine"],
     required: true,
   },
   image: {
