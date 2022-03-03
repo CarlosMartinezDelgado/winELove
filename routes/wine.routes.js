@@ -65,10 +65,11 @@ router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
   
   router.get("/:id", isLoggedIn, async (req, res, next) => {
     const id = req.params.id;
-    const wineDetails = await WineModel.findById(id);
-    //populate??
     try {
-      res.render("wine/wine-details", {wineDetails})
+      const wineDetails = await WineModel.findById(id) 
+      const allComments = await CommentModel.find({wineId: id}).populate("userId");
+       //populate?? 
+      res.render("wine/wine-details", {wineDetails, allComments})
     }catch (err) {
       next(err);
     }

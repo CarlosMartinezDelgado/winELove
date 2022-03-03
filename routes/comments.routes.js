@@ -12,7 +12,7 @@ const isLoggedAdmin = require("../middleware/isLoggedAdmin");
 
 // GET "/wine/comment/create"
 
-router.get('/comments/create', isLoggedIn, async (req, res, next) => {
+router.get('/create', isLoggedIn, async (req, res, next) => {
   const oneComment = await CommentModel.find();
   try {
     res.render("wine/wine-details.hbs", {oneComment})
@@ -23,15 +23,19 @@ router.get('/comments/create', isLoggedIn, async (req, res, next) => {
 
   //POST "/comment/create"
   
-router.post('/comments/create', isLoggedIn, async (req, res, next) => {
-  const {text, wine, userId} = req.body;
-  
+router.post('/create/:wineId', isLoggedIn, async (req, res, next) => {
+  const {text} = req.body;
+  const {wineId} = req.params
+  const {userId} = req.session.user._id
+
+  console.log(text);
   try {
     await CommentModel.create({
       text,
-      wine,
-      userId: req.session.user._id,     
+      wineId,
+      userId,
     });
+    
     
     res.redirect("/main");
   } catch (err) {
