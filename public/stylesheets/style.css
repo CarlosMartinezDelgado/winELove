@@ -1,8 +1,60 @@
+/* font-family: 'Gideon Roman', cursive;
+font-family: 'Hubballi', cursive;
+font-family: 'Smooch Sans', sans-serif; */
+
+
 body {
+  background-repeat: no-repeat;  
+  width: 1300px;
+  height: 1300px;
   background-image: url(../images/BG_Main.png);
   padding: 50px;
+  color: white;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+a {
+   color: white;
+ }
+
+
+#nav-index img {
+  border-radius: 10px;
+}
+
+.home_nav {
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: normal;
+  align-content: center;
+}
+
+#logo_only {
+  padding-left: 10px;
+}
+
+.list-group  {
+
+  color: rgb(23, 23, 24);
+  border: 10px;
+
+}
+#sign_log {
+  padding-right: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;  
+}
+
+/* .wineDetails{
+  padding-top: 50px;
+} */
 
 a {
   color: #00b7ff;
@@ -12,27 +64,43 @@ h1 {
   color: 15px;
 }
 
-#welcome {
+#create-form span {
+  background-color: rgb(33, 37, 32);
+  color: white;
+  
+}
+
+#profile {
+  background-color: rgb(33, 37, 32);
+  color: white;
+
+}
+
+#profile2 {
+  background-color: rgb(33, 37, 32);
+  color: rgb(219, 53, 53);
 
 }
 
 .cuadro {
-width:450px;
-margin:10px 50px;
-padding:20px;
-font-size:italic;
-background-color:#cfc;
-color:#000;
+  width:450px;
+  margin:10px 50px;
+  padding:20px;
+  font-size:italic;
+  background-color:#cfc;
+  color:#000;
 }
 
 #etiqueta {
   width: 110px;
   text-align:center;
-
+  
 }
 
 .logo {
-padding-left: 55px;
+  padding-left: 355px;
+  text-align:center;
+
 }
 
 .main {
@@ -42,12 +110,28 @@ padding-left: 55px;
   justify-content: space-between;
   align-items: stretch;
   align-content: stretch;
-
+  
 }
 
 #main {
   border-style: double;
-
+  
 }
-#wines-recomend {}
 
+
+#comment-label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: normal;
+  padding-top: 20px;
+  padding-right: 10px;
+  background-color: transparent;
+  color: white;
+}
+
+#space {
+  padding: 10px;
+}

@@ -2,16 +2,19 @@ const router = require("express").Router();
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index");
+  res.render("auth/login");
 });
 
-// const authRoutes = require("./auth.routes");
-// router.use("/auth", authRoutes);
+const authRoutes = require("./auth.routes");
+router.use("/", authRoutes);
 
 const wineRoutes = require("./wine.routes");
 router.use("/wines", wineRoutes);
 
 const mainRoutes = require("./main.routes");
 router.use("/main", mainRoutes);
+
+const commentsRoutes = require("./comments.routes");
+router.use("/comments", commentsRoutes);
 
 module.exports = router;

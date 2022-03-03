@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 // Require the User model in order to interact with the database
 const UserModel = require("../models/User.model");
 
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
+// Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
@@ -67,7 +67,7 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
       nickname,
       country,
     })
-    res.redirect("/auth/login")
+    res.redirect("/")
   } 
   catch (error) 
   {
@@ -75,11 +75,11 @@ router.post("/signup", isLoggedOut, async (req, res, next) => {
   }
 })
 
-router.get("/login", isLoggedOut, (req, res, next) => {
+router.get("/", isLoggedOut, (req, res, next) => {
   res.render("auth/login");
 });
 
-router.post("/login", isLoggedOut, async (req, res, next) => {
+router.post("/", isLoggedOut, async (req, res, next) => {
     //console.log(req.body);
     const {email, password} = req.body
 
@@ -119,10 +119,12 @@ router.post("/login", isLoggedOut, async (req, res, next) => {
     }
 
     req.session.user = emailUser // ESTO ES SUPER IMPORTANTE
-    req.app.locals.isLoggedIn = true // req.app.locals. es una variable local
+    req.app.locals.isLoggedIn = true // req.app.locals. es una variable local que se puede acceder desde handlebars
+    req.app.locals.isLoggedOut = false
     
+
     if (emailUser.role === "admin") {
-    req.app.locals.isLoggedIn = true
+    req.app.locals.isLoggedAdmin = true
     }
     //*3 Redirect user to profile
     res.redirect("/main")  /// profile
@@ -137,7 +139,9 @@ router.post("/login", isLoggedOut, async (req, res, next) => {
 router.get("/logout", (req, res, next) => {
 
   req.session.destroy();
+  req.app.locals.isLoggedOut = true
   req.app.locals.isLoggedIn = false
+  req.app.locals.isLoggedAdmin = false
 
   res.redirect("/")
 })

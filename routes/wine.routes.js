@@ -65,10 +65,12 @@ router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
   
   router.get("/:id", isLoggedIn, async (req, res, next) => {
     const id = req.params.id;
-    const wineDetails = await WineModel.findById(id);
     try {
-      res.render("wine/wine-details", {wineDetails})
-    }catch (err) {
+      const wineDetails = await WineModel.findById(id) 
+      const allComments = await CommentModel.find({wineId: id}).populate("userId");
+      res.render("wine/wine-details", {wineDetails, allComments})
+    }
+    catch (err) {
       next(err);
     }
   })
@@ -112,9 +114,7 @@ router.post("/:id/edit", isLoggedAdmin, async (req, res, next) => {
 
   router.post("/:id/delete", isLoggedAdmin, async (req, res, next) => {
     //Promises con async
-
     try {
-      
       const { id } = req.params;
 
       //Delete element from db

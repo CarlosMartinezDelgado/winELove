@@ -47,7 +47,7 @@ router.get("/profile", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/profile/edit", async (req, res, next) => {
+router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   const id = req.session.user._id;
   const { username, password, email, nickname, country, image} = req.body;
   try {
@@ -65,7 +65,7 @@ router.post("/profile/edit", async (req, res, next) => {
   }
 }),
 
-  router.post("/profile/delete", async (req, res, next) => {
+  router.post("/profile/delete", isLoggedIn, async (req, res, next) => {
     try {
       const id = req.session.user._id;
       //Delete element from db
