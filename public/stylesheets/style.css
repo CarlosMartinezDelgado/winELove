@@ -4,10 +4,12 @@ font-family: 'Smooch Sans', sans-serif; */
 
 
 body {
-  
+  color: white;
   background-image: url(../images/BG_Main.png);
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+  font-family: 'Hubballi', cursive;
+  font-size: large;
 }
 
 #nav-index {

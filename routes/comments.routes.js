@@ -39,66 +39,32 @@ router.post('/comments/create', isLoggedIn, async (req, res, next) => {
   }
 });
 
-// router.get("/:id", isLoggedIn, async (req, res, next) => {
-//     const id = req.params.id;
-//     const wineDetails = await WineModel.findById(id);
-//     try {
-//       res.render("wine/wine-details", {wineDetails})
-//     }catch (err) {
-//       next(err);
-//     }
-// })
-
-// Edit wines -- -Editar los vinos
+// Edit comments
   router.get("/:id/edit", isLoggedAdmin, async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const oneWine = await WineModel.findById(id);
-    console.log(oneWine);
-    // render edit-form view
-    res.render("wine/edit-wine.hbs", { oneWine });
+    const oneComment = await CommentModel.findById(id);
+   
+    res.render("wine/edit-wine.hbs", { oneComment });
   } catch (err) {
     next(err);
   }
 });
 
-// router.post("/:id/edit", isLoggedAdmin, async (req, res, next) => {
-//   const { id } = req.params; 
-//   const { name, aging, grapes, vintage, country, bio, type, userId } = req.body;
-  
-//   //indByIdAndUpdate needs 2 parameters
-//   try {
-//     const updatedWine = await WineModel.findByIdAndUpdate(id, {
-//       name,
-//       aging,
-//       grapes,
-//       vintage,
-//       country,
-//       bio,
-//       type,
-//       userId: req.session.user._id,
-//     });
-//     res.redirect(`/wines/${updatedWine._id}/edit`);
-//   } catch (err) {
-//     next(err);
-//   }
-// }),
 
+  router.post("/:id/delete", isLoggedAdmin, async (req, res, next) => {
+        try {
+      const { id } = req.params;
 
-//   router.post("/:id/delete", isLoggedAdmin, async (req, res, next) => {
-//     //Promises con async
-//     try {
-//       const { id } = req.params;
+    
+      const deleteComment = await CommentModel.findByIdAndDelete(id);
 
-//       //Delete element from db
-//       const deletedWine = await WineModel.findByIdAndDelete(id);
-
-//      res.redirect("/main");
-//     } catch (err) {
-//       next(err);
-//     }
-//   });
+     res.redirect("/main/profile");
+    } catch (err) {
+      next(err);
+    }
+  });
 
   
 module.exports = router;

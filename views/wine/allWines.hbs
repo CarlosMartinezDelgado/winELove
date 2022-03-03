@@ -1,7 +1,7 @@
 <h3>My Wines list</h3>
 
 
-<ul>
+{{!-- <ul style="">
 <div class="list-group">
 {{#each allWines}}
   <li>
@@ -10,5 +10,15 @@
 
 {{/each}}
 </div>
+</ul> --}}
+<div class="list-group">
+<ul style="background: rgb(31, 30, 30)">
+  {{#each allWines}}
+  <li>
+    <a class="list-group-item list-group-item-action" href="/wines/{{this.id}}" style="background-color: rgb(145, 138, 138)">{{this.name}}</a> 
+</li>
+
+{{/each}}
 </ul>
+</div>
 
