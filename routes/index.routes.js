@@ -14,4 +14,7 @@ router.use("/wines", wineRoutes);
 const mainRoutes = require("./main.routes");
 router.use("/main", mainRoutes);
 
+const commentsRoutes = require("./comments.routes");
+router.use("/comments", commentsRoutes);
+
 module.exports = router;

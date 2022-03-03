@@ -5,7 +5,7 @@ const wineSchema = new Schema({
     type: String,
     required: true,
   },
-  wine: {
+  wineId: {
     type: Schema.Types.ObjectId,
     ref: "Wine"
   },
