@@ -5,51 +5,47 @@ const mongoose = require("mongoose");
 
 // Require the User model in order to interact with the database
 const UserModel = require("../models/User.model");
-const WineModel = require("../models/Wine.model")
-const CommentModel = require("../models/Comment.model")
+const WineModel = require("../models/Wine.model");
+const CommentModel = require("../models/Comment.model");
 
 // Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/", (req, res, next) => {
-  res.render("main/main.hbs")
-})
+  res.render("main/main.hbs");
+});
 
 router.get("/profile", isLoggedIn, async (req, res, next) => {
-
-  // buscan la info del usuario y la pasan a profile.hbs
-    
+  
+  // Look for User info and send it to profile.hbs
   const id = req.session.user._id;
 
   try {
-  const currentUser = await UserModel.findById(id)
-
-    res.render("main/profile.hbs", {currentUser})
-  }
+    const currentUser = await UserModel.findById(id);
+    res.render("main/profile.hbs", { currentUser });
+  } 
   catch (err) {
-    next(err)
+    next(err);
   }
-})
-  
+});
 
-// Edit Profile -- -Editar el perfil
-  router.get("/profile/edit", isLoggedIn, async (req, res, next) => {
-  
-    const id = req.session.user._id // el id no deberia venir por params sino por req.ression.user._id
-    try {
-    
+// Edit Profile
+router.get("/profile/edit", isLoggedIn, async (req, res, next) => {
+  const id = req.session.user._id; // el id no deberia venir por params sino por req.ression.user._id
+  try {
     const userProfile = await UserModel.findByIdAndUpdate(id);
-    // console.log(userProfile);
-      res.render("main/edit-profile.hbs", { userProfile });
-  } catch (err) {
+    res.render("main/edit-profile.hbs", { userProfile });
+  } 
+  catch (err) {
     next(err);
   }
 });
 
 router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
   const id = req.session.user._id;
-  const { username, password, email, nickname, country, image} = req.body;
+  const { username, password, email, nickname, country, image } = req.body;
+  
   try {
     await UserModel.findByIdAndUpdate(id, {
       username,
@@ -60,22 +56,23 @@ router.post("/profile/edit", isLoggedIn, async (req, res, next) => {
       image,
     });
     res.redirect("/main/profile");
-  } catch (err) {
+  } 
+  catch (err) {
     next(err);
   }
 }),
-
   router.post("/profile/delete", isLoggedIn, async (req, res, next) => {
     try {
       const id = req.session.user._id;
+      
       //Delete element from db
       const deletedUser = await UserModel.findByIdAndDelete(id);
       req.session.destroy();
       res.redirect("/");
-    } catch (err) {
+    } 
+    catch (err) {
       next(err);
     }
   });
-
 
 module.exports = router;

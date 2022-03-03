@@ -15,12 +15,11 @@ const isLoggedAdmin = require("../middleware/isLoggedAdmin");
 router.get("/", isLoggedIn, async (req, res, next) => {
   const allWines = await WineModel.find();
   try {
-    res.render("wine/allWines", {allWines})
-  }catch (err) {
+    res.render("wine/allWines", { allWines });
+  } catch (err) {
     next(err);
   }
-})
-
+});
 
 // GET "/wine/create"
 
@@ -32,19 +31,17 @@ router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
     next(err);
   }
 }),
-
   //POST "/wines/create"
-  
+
   router.post("/addWine", isLoggedAdmin, async (req, res, next) => {
-    const { name, aging, grapes, vintage, country, bio, type, userId } = req.body;
-  
-    if (!name || !aging || !grapes|| !vintage || !type ) {
-    return res
-    .status(400)
-    .render("wine/addWine", {
-      errorMessage: "Please fill all fields.",
-    });
-  }
+    const { name, aging, grapes, vintage, country, bio, type, userId } =
+      req.body;
+
+    if (!name || !aging || !grapes || !vintage || !type) {
+      return res.status(400).render("wine/addWine", {
+        errorMessage: "Please fill all fields.",
+      });
+    }
 
     try {
       await WineModel.create({
@@ -55,28 +52,30 @@ router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
         country,
         bio,
         type,
-        userId: req.session.user._id, 
+        userId: req.session.user._id,
       });
       res.redirect("/main");
-    } catch (err) {
+    } 
+    catch (err) {
       next(err); //add fill all fields
     }
   });
-  
-  router.get("/:id", isLoggedIn, async (req, res, next) => {
-    const id = req.params.id;
-    try {
-      const wineDetails = await WineModel.findById(id) 
-      const allComments = await CommentModel.find({wineId: id}).populate("userId");
-      res.render("wine/wine-details", {wineDetails, allComments})
-    }
-    catch (err) {
-      next(err);
-    }
-  })
+
+router.get("/:id", isLoggedIn, async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const wineDetails = await WineModel.findById(id);
+    const allComments = await CommentModel.find({ wineId: id }).populate(
+      "userId"
+    );
+    res.render("wine/wine-details", { wineDetails, allComments });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // Edit wines -- -Editar los vinos
-  router.get("/:id/edit", isLoggedAdmin, async (req, res, next) => {
+router.get("/:id/edit", isLoggedAdmin, async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -90,9 +89,9 @@ router.get("/addWine", isLoggedAdmin, async (req, res, next) => {
 });
 
 router.post("/:id/edit", isLoggedAdmin, async (req, res, next) => {
-  const { id } = req.params; 
+  const { id } = req.params;
   const { name, aging, grapes, vintage, country, bio, type, userId } = req.body;
-  
+
   //indByIdAndUpdate needs 2 parameters
   try {
     const updatedWine = await WineModel.findByIdAndUpdate(id, {
@@ -110,8 +109,6 @@ router.post("/:id/edit", isLoggedAdmin, async (req, res, next) => {
     next(err);
   }
 }),
-
-
   router.post("/:id/delete", isLoggedAdmin, async (req, res, next) => {
     //Promises con async
     try {
@@ -120,11 +117,10 @@ router.post("/:id/edit", isLoggedAdmin, async (req, res, next) => {
       //Delete element from db
       const deletedWine = await WineModel.findByIdAndDelete(id);
 
-     res.redirect("/main");
+      res.redirect("/main");
     } catch (err) {
       next(err);
     }
   });
 
-  
 module.exports = router;

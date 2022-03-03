@@ -4,9 +4,7 @@ font-family: 'Smooch Sans', sans-serif; */
 
 
 body {
-  background-repeat: no-repeat;  
-  width: 1300px;
-  height: 1300px;
+  background-repeat: no-repeat; 
   background-image: url(../images/BG_Main.png);
   padding: 50px;
   color: white;
@@ -14,8 +12,12 @@ body {
 }
 
 a {
-   color: white;
+   color: green;
  }
+
+h5 {
+  color: "blue"
+}
 
 
 #nav-index img {
@@ -52,9 +54,13 @@ a {
   align-content: center;  
 }
 
-/* .wineDetails{
-  padding-top: 50px;
-} */
+.cardWine {
+  margin: 50px;
+}
+
+ .form-floating{
+  margin-left: 50px;
+}
 
 a {
   color: #00b7ff;
@@ -63,6 +69,16 @@ a {
 h1 {
   color: 15px;
 }
+
+.allComents {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: center;
+}
+
 
 #create-form span {
   background-color: rgb(33, 37, 32);
@@ -79,6 +95,10 @@ h1 {
 #profile2 {
   background-color: rgb(33, 37, 32);
   color: rgb(219, 53, 53);
+
+}
+
+.wineDetails {
 
 }
 

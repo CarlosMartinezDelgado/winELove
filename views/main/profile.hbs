@@ -67,12 +67,14 @@
   </div>
 
     <div>
-      <img src="../images/Avatar_prueba.jpeg" class="card-img-top" alt="Image" style="width: 20rem">
+      {{#if isLoggedAdmin}}
+      <img src="../images/Avatar_M.jpg" class="card-img-top" alt="Image" style="width: 20rem">
+      {{else}}
+      <img src="../images/Avatar_C.png" class="card-img-top" alt="Image" style="width: 20rem">
+      {{/if}}    
     </div>
 
  <br>
-
-{{!-- <button class="btn btn-outline-warning"> <a href="/main/profile/edit">Edit</a></button> --}}
 
   <form id="etiqueta" method="GET" action="/main/profile/edit">
     <button class="btn btn-outline-warning" style="width: 6rem">Edit</button>
