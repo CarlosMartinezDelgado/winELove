@@ -233,16 +233,6 @@ const wines = [
   {
     aging: "Crianza",
     bio: true,
-    country: "USA",
-    name: "Kistler",
-    type: "White Wine",
-    grapes: ["Chardonnay"],
-    vintage: "2019",
-    image: "/images/Kistler.webp",
-  },
-  {
-    aging: "Crianza",
-    bio: true,
     country: "Argentina",
     name: "De Sangre",
     type: "Red Wine",
