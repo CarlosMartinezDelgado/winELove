@@ -17,8 +17,8 @@ const wines = [
     name: "Joel Gott",
     type: "White Wine",
     grapes:["Chardonnay"],
-    vintage: "2020",
-    image: "/images/Joel_Gott.webp"
+    vintage: "2013",
+    image: "/images/Joel_Gott.png"
   },
   {
     aging: "Crianza",
@@ -28,7 +28,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Tempranillo", "Garnacha", "Graciano"],
     vintage: "2017",
-    image: "/images/LAS_BEATAS.jpeg"
+    image: "/images/las-beatas.png"
   },
   {
     aging: "Crianza",
@@ -48,7 +48,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Gewürztraminer"],
     vintage: "2021",
-    image: "/images/Nussbaumer.jpeg",
+    image: "/images/Nussbaumer.png",
   },
   {
     aging: "Reserve",
@@ -58,7 +58,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Pinot Noir"],
     vintage: "2016",
-    image: "/images/Ken_Wright.jpeg",
+    image: "/images/Ken_Wright.png",
   },
   {
     aging: "Reserve",
@@ -78,7 +78,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Sangiovese"],
     vintage: "2017",
-    image: "/images/san_filippo.webp",
+    image: "/images/san_filippo.png",
   },
   {
     aging: "Crianza",
@@ -108,7 +108,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Chardonnay"],
     vintage: "2019",
-    image: "/images/Kistler.webp",
+    image: "/images/Kistler.png",
   },
   {
     aging: "Crianza",
@@ -118,7 +118,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Cabernet Sauvignon", "Malbec"],
     vintage: "2015",
-    image: "/images/Los_Chacayes.jpeg",
+    image: "/images/Los_Chacayes.png",
   },
   {
     aging: "Crianza",
@@ -138,7 +138,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Pinot Noir"],
     vintage: "2008",
-    image: "/images/Clos-de-Beze.jpeg",
+    image: "/images/Clos-de-Beze.png",
   },
   {
     aging: "Crianza",
@@ -168,7 +168,7 @@ const wines = [
     type: "White Wine",
     grapes: ["Riesling"],
     vintage: "2018",
-    image: "/images/Trimbrach.webp",
+    image: "/images/Trimbrach.png",
   },
   {
     aging: "Crianza",
@@ -248,7 +248,7 @@ const wines = [
     type: "Red Wine",
     grapes: ["Malbec"],
     vintage: "2018",
-    image: "/images/luigi-bosca.jpeg",
+    image: "/images/luigi-bosca.png",
   },
 ];
 

@@ -80,7 +80,7 @@ router.get("/:id/edit", isLoggedAdmin, async (req, res, next) => {
     const { id } = req.params;
 
     const oneWine = await WineModel.findById(id);
-    console.log(oneWine);
+    // console.log(oneWine);
     // render edit-form view
     res.render("wine/edit-wine.hbs", { oneWine });
   } catch (err) {

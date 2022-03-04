@@ -1,97 +1,129 @@
 <h2 style="color:rgb(220, 34, 34)">{{userProfile.nickname}}</h2>
-<div id="create-form" style="width: 30rem">
-<form action="/main/profile/edit" method="POST">
+<div class="main">
+  <div>
+    <div id="create-form" style="width: 30rem">
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="username"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >User Name:</span>
+        <input
+          id="profile"
+          type="text"
+          name="username"
+          autocomplete="off"
+          value="{{userProfile.username}}"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          
+        />
+      </div>
 
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="username"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >User Name:</span>
-    <input id="profile"
-      type="text"
-      name="username"
-      value="{{userProfile.username}}"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="email"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >Email:</span>
+        <input
+          id="profile"
+          type="text"
+          name="email"
+          autocomplete="off"
+          value="{{userProfile.email}}"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          
+        />
+      </div>
 
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="email"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Email:</span>
-    <input id="profile"
-      type="text"
-      name="email"
-      value="{{userProfile.email}}"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="password"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >Password:</span>
+        <input
+          id="profile"
+          type="texts"
+          name="password"
+          autocomplete="off"
+          value="**********************"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          
+        />
+      </div>
 
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="password"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Password:</span>
-    <input id="profile"
-      type="texts"
-      name="password"
-      value="**********************"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="country"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >Country:</span>
+        <input
+          id="profile"
+          type="text"
+          name="country"
+          autocomplete="off"
+          value="{{userProfile.country}}"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          
+        />
+      </div>
+    </div>
+    <div>
+      <div class="edit-delete">
+        <div class="edit-delete">
 
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="nickname"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Nick Name:</span>
-    <input id="profile"
-      type="text"
-      name="nickname"
-      value="{{userProfile.nickname}}"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="country"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Country:</span>
-    <input id="profile"
-      type="text"
-      name="country"
-      value="{{userProfile.country}}"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-  <div id="etiqueta">
-    <img src="../images/Avatar_prueba.jpeg" class="card-img-top" alt="Image" style="width: 20rem">
-  </div>
+          <form id="etiqueta" method="GET" action="/main/profile/edit">
+            <button
+              class="btn btn-outline-warning"
+              style="width: 6rem"
+            >Edit</button>
+          </form>
 
-  <div id="etiqueta">
-    <button class="btn btn-outline-success">Edit</button>
+          <form id="etiqueta" method="POST" action="/main/profile/delete">
+            <button
+              class="btn btn-outline-danger"
+              style="width: 6rem"
+            >Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-
-</form>
-
+  <div>
+    <div class="image-profile">
+      {{#if isLoggedAdmin}}
+        <img
+          src="/images/Avatar_M.jpg"
+          class="card-img-top"
+          alt="Image"
+          style="width: 20rem"
+        />
+      {{else}}
+        <img
+          src="/images/Avatar_C.png"
+          class="card-img-top"
+          alt="Image"
+          style="width: 20rem"
+        />
+      {{/if}}
+    </div>
+  </div>
+</div>
 {{#if errorMessage}}
-   <p>{{errorMessage}}</p>
+  <p>{{errorMessage}}</p>
 {{/if}}
 
-</div>

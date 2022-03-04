@@ -1,93 +1,128 @@
-
 <h2 style="color:rgb(236, 236, 241)">{{currentUser.nickname}}</h2>
+<div class="main">
+  <div>
+    <div id="create-form" style="width: 30rem">
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="username"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >User Name:</span>
+        <input
+          id="profile"
+          type="text"
+          name="username"
+          autocomplete="off"
+          value="{{currentUser.username}}"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          readonly
+        />
+      </div>
 
-<div id="create-form" style="width: 30rem" >
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="username"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >User Name:</span>
-    <input id="profile"
-      type="text"
-      name="username"
-      value="{{currentUser.username}}"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="email"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >Email:</span>
+        <input
+          id="profile"
+          type="text"
+          name="email"
+          autocomplete="off"
+          value="{{currentUser.email}}"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          readonly
+        />
+      </div>
 
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="email"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Email:</span>
-    <input id="profile"
-      type="text"
-      name="email"
-      value="{{currentUser.email}}"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="password"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >Password:</span>
+        <input
+          id="profile"
+          type="texts"
+          name="password"
+          autocomplete="off"
+          value="**********************"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          readonly
+        />
+      </div>
 
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="password"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Password:</span>
-    <input id="profile"
-      type="texts"
-      name="password"
-      value="**********************"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-
-  <div class="input-group mb-3">
-    <span id="etiqueta"
-      for="country"
-      class="input-group-text"
-      id="inputGroup-sizing-default"
-    >Country:</span>
-    <input id="profile"
-      type="text"
-      name="country"
-      value="{{currentUser.country}}"
-      class="form-control"
-      aria-label="Sizing example input"
-      aria-describedby="inputGroup-sizing-default"
-    />
-  </div>
-
-    <div>
-      {{#if isLoggedAdmin}}
-      <img src="../images/Avatar_M.jpg" class="card-img-top" alt="Image" style="width: 20rem">
-      {{else}}
-      <img src="../images/Avatar_C.png" class="card-img-top" alt="Image" style="width: 20rem">
-      {{/if}}    
+      <div class="input-group mb-3">
+        <span
+          id="etiqueta"
+          for="country"
+          class="input-group-text"
+          id="inputGroup-sizing-default"
+        >Country:</span>
+        <input
+          id="profile"
+          type="text"
+          name="country"
+          autocomplete="off"
+          value="{{currentUser.country}}"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          readonly
+        />
+      </div>
     </div>
+    <div>
+      <div class="edit-delete">
+        <div class="edit-delete">
 
- <br>
+          <form id="etiqueta" method="GET" action="/main/profile/edit">
+            <button
+              class="btn btn-outline-warning"
+              style="width: 6rem"
+            >Edit</button>
+          </form>
 
-  <form id="etiqueta" method="GET" action="/main/profile/edit">
-    <button class="btn btn-outline-warning" style="width: 6rem">Edit</button>
-  </form>
-  
-  <form id="etiqueta" method="POST" action="/main/profile/delete">
-    <button class="btn btn-outline-danger" style="width: 6rem">Delete</button>
-  </form>
-
-</form>
-
-{{#if errorMessage}}
-   <p>{{errorMessage}}</p>
-{{/if}}
-
+          <form id="etiqueta" method="POST" action="/main/profile/delete">
+            <button
+              class="btn btn-outline-danger"
+              style="width: 6rem"
+            >Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="image-profile">
+      {{#if isLoggedAdmin}}
+        <img
+          src="/images/Avatar_M.jpg"
+          class="card-img-top"
+          alt="Image"
+          style="width: 20rem"
+        />
+      {{else}}
+        <img
+          src="/images/Avatar_C.png"
+          class="card-img-top"
+          alt="Image"
+          style="width: 20rem"
+        />
+      {{/if}}
+    </div>
+  </div>
 </div>
+{{#if errorMessage}}
+  <p>{{errorMessage}}</p>
+{{/if}}

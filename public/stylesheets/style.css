@@ -43,6 +43,14 @@ body {
   margin-left: 150px;
 }
 
+.edit-wine-buttons{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
 
 .list-group  {
 
@@ -195,8 +203,18 @@ margin-top: 20px
 #x-button{
   height: 5%;
   width: 5%;
+ 
 }
-  
+
+.edit-delete-wines {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin-top: -50px;
+}
 
 #comment-label {
   display: flex;
@@ -207,6 +225,7 @@ margin-top: 20px
   align-content: normal;
   /* margin-top: 10px; */
   padding-right: 10px;
+  margin-top: 15px;
   background-color: transparent;
   color: white;
 }
