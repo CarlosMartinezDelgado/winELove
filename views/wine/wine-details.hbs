@@ -1,33 +1,43 @@
 <div class="cardWine"></div>
-<div class:"allComents">
-
-  <div class="card mb-3"style="max-width: 495px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{wineDetails.image}}"class="img-fluid rounded-start" alt="wine image">
-      </div>
-      <div class="col-md-8" class="wineDetails">
-        <div class="card-body">
-          <h5 class="card-title" style="color:rgb(33, 37, 32)">{{wineDetails.name}}</h5>
-          <p class="card-text">
-            <ul style="background: rgb(33, 39, 32)">
-              <li>{{wineDetails.type}}</li>
-              <li>{{wineDetails.grapes}}</li>
-              <li>{{wineDetails.country}}</li>
-              <li>{{wineDetails.aging}}</li>
-              <li>{{wineDetails.vintage}}</li>
-              
-            </ul>
-          </p>
-          <p class="card-text"><small class="text-muted">Your comment here:</small></p>
+<div  class="allCards">
+  <div>
+    <div class="card text-white bg-secondary mb-3" style="max-width: 480px;">
+      <div class="row g-0" class="card border-dark mb-3" id="margin-card">
+        <div class="col-md-4">
+          <img
+            src="{{wineDetails.image}}"
+            id="wine-image-card"
+            class="wine-view"
+            class="img-fluid rounded-center"
+            alt="{{wineDetails.name}}"
+          />
+        </div>
+        <div
+          class="card text-white bg-dark mb-3"
+          style="max-width: 18rem;"
+          id="margin-card"
+        >
+          <div class="card-body">
+            <h5 class="card-title">{{wineDetails.name}}</h5>
+            <p class="card-text">
+              <ul>
+                <li>{{wineDetails.type}}</li>
+                <li>{{wineDetails.grapes}}</li>
+                <li>{{wineDetails.country}}</li>
+                <li>{{wineDetails.aging}}</li>
+                <li>{{wineDetails.vintage}}</li>
+              </ul>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-
     <div id="create-form" style="width: 30rem">
-    <form method="post" action="/comments/create/{{wineDetails._id}}">
-      <div class="form-floating" class="comment">
-        <input
+      <form method="post" action="/comments/create/{{wineDetails._id}}">
+        <div class="form-floating" class="comment">
+          <div class="input-group">
+            <span class="input-group-text">Comments</span>
+            <input
             type="text"
             name="text"
             class="form-control"
@@ -35,46 +45,68 @@
             id="floatingTextarea2"
             style="height: 100px"
             aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-default"       
-        />
-      </div>
-      
-      <div id="comment-label">
-        <button class="btn btn-secondary" type="submit">Submit</button>
-      </div>
+            aria-describedby="inputGroup-sizing-default"
+          />
+          </div>
+        </div>
+        <div class="card-buttons">
+          <div class="edit-delete" >
+            <div>
+              {{#if isLoggedAdmin}}
+              <form method="POST" action="/wines/{{wineDetails._id}}/edit">
+                <button class="btn btn-outline-warning">Edit</button>
+              </form>
+              {{/if}}
+            </div>
+            <div style="padding: 10px"></div>
+            <div>
+              {{#if isLoggedAdmin}}
+              <form method="POST" action="/wines/{{wineDetails._id}}/delete">
+                <button class="btn btn-outline-danger">Delete</button>
+              </form>
+              {{/if}}
+            </div>
+          </div>
+          <div id="comment-label">
+            <button class="btn btn-secondary" type="submit">Submit</button>
+          </div>
+        </div>
+        
 
-    </form>
-
+      </form>
     </div>
-
-      {{#if isLoggedAdmin}}
-        <form method="POST" action="/wines/{{wineDetails._id}}/edit">
-          <button class="btn btn-outline-warning">Edit</button>
-        </form>
-
-        <form method="POST" action="/wines/{{wineDetails._id}}/delete">
-          <button class="btn btn-outline-danger">Delete</button>
-        </form>
-      {{/if}}
-    </div>
-
   </div>
 
   <div>
-
-    {{#each allComments}}
     <div>
-    <p>{{this.userId.nickname}}</p>
-    <p>{{this.text}}</p>
-      <div class="btn-group me-2" role="group" aria-label="Second group">
-      <form method="POST" action="/comments/{{this._id}}/delete">
-      <button type="submit" class="btn btn-secondary">X</button>
-      </form>
-      </div>
+
+      {{#each allComments}}
+        <div class="comments">
+          <div >
+              {{!-- <button type="submit" class="btn btn-secondary">X</button> --}}
+          {{!-- <p>{{this.userId.nickname}}</p>
+          <p>{{this.text}}</p> --}}
+
+            <div class="card" style="width: 25rem;">
+              
+                <form method="POST" action="/comments/{{this._id}}/delete">
+                  <button type="submit" class="btn btn-secondary" id="x-button"><img src="/images/delete-message.png" alt=""></button>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" img="">{{this.userId.nickname}}</li>
+                    <li class="list-group-item" img="">{{this.text}}</li>
+                  </ul>
+                </form>
+            
+            
+
+          </div>
+
+
+          </div>
+        </div>
+
+      {{/each}}
+
     </div>
-
-    {{/each}}
-
-
   </div>
 </div>

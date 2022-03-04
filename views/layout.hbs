@@ -12,6 +12,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Hubballi&family=Smooch+Sans:wght@100&display=swap"
     rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Hubballi&family=Smooch+Sans:wght@100&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -22,11 +25,6 @@
     </div>
 
     {{#if isLoggedOut}}
-    {{!-- <div id="sign_log" class="home_nav" class="container-fluid justify-content-start">
-      <a href="/auth/signup"><button class="btn btn-outline-success me-2" type="button">Sign up</button></a>
-      <div id="space"></div>
-      <a href="/auth/login"><button class="btn btn-outline-success me-2" type="button">Login</button></a>
-    </div> --}}
     {{else}}
     <div>
       {{#if isLoggedAdmin}}
@@ -41,7 +39,7 @@
       <a href="/wines"><button class="btn btn-outline-success me-2" type="button">List Wines</button></a>
     </div>
     <div>
-      <a href="/main/profile"><img src="/images/search.png" alt="profile" width="40px" height="32px"></a>
+      <a href="/main/profile"><img src="/images/search.png" alt="profile" id="profile_logo"></a>
 
       <a href="/logout"><button class="btn btn-outline-success me-2" type="button" color="red">Logout</button></a>
     </div>
