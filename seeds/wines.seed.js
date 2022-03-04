@@ -8,7 +8,7 @@ const wines = [
     type: "White Wine",
     grapes:["Godello"],
     vintage: "2020",
-    image: "/images/Viña Godeval.png",
+    image: "/images/Viña-Godeval.png",
   },
   {
     aging: "Great Reserve",
